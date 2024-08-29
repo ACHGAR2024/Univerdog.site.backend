@@ -11,6 +11,8 @@ use App\Http\Controllers\API\EventController;
 use App\Http\Controllers\API\PlaceReservationController; 
 use App\Http\Controllers\DashboardController;
 
+
+
 // Authentication routes
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login'])->name('login');
@@ -20,6 +22,11 @@ Route::middleware('auth:sanctum')->get('/dashboard', [DashboardController::class
 Route::get('auth/google', [AuthController::class, 'redirectToAuth']);
 Route::get('auth/callback', [AuthController::class, 'handleAuthCallback']);
 Route::post('loginGoogle', [AuthController::class, 'loginWithGoogle']);
+
+//Route::post('/forgotpw', [AuthController::class, 'forgotPassword']);
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
 
 
 

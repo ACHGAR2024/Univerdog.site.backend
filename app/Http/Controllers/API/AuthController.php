@@ -19,6 +19,9 @@ use Laravel\Socialite\Contracts\User as SocialiteUser;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Session\Middleware\StartSession;
 
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Password as PasswordFacade;
+
 class AuthController extends Controller
 {
 
@@ -62,44 +65,7 @@ class AuthController extends Controller
         ]);
     }
     
-/*    public function handleAuthCallback()
-    {
-        try {
-            // la Vérification SSL Désactiver
-            $socialiteUser = Socialite::driver('google')
-    ->stateless()
-    ->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))
-    ->user(); // Attention : Cette solution expose votre application à des risques de sécurité, surtout en production.
-       
-            //$socialiteUser = Socialite::driver('google')->stateless()->user();  
-        } catch (ClientException $e) {
-            return response()->json(['error' => 'Invalid credentials provided.'], 422);
-        }
-    
-        $user = User::query()->firstOrCreate(
-            ['email' => $socialiteUser->getEmail()],
-            [
-                'email_verified_at' => now(),
-                'name' => $socialiteUser->getName(),
-                'google_id' => $socialiteUser->getId(),
-                'avatar' => $socialiteUser->getAvatar(),
-            ]
-        );
-    
-        // Générer un token JWT
-        try {
-            $token = JWTAuth::fromUser($user);
-        } catch (JWTException $e) {
-            return response()->json(['error' => 'Could not create token'], 500);
-        }
-    
-        return response()->json([
-            'user' => $user,
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-        ]);
-    }
-    */
+
     public function handleAuthCallback()
     {
         try {
@@ -218,7 +184,8 @@ public function handleGoogleLogin(Request $request)
     {
         Auth::logout();
 
-        return response()->json(['message' => 'User successfully logged out']);
+        return response()->json(['message' => 'User successfully logged out'])->withHeaders(['Location' => 'http://localhost:5173']);
+      
     }
 
     protected function createNewToken($token)
@@ -336,6 +303,19 @@ public function updateRole(Request $request, $id)
 }
  
         
+public function forgotPassword(Request $request)
+{
+    $request->validate(['email' => 'required|email']);
+
+    $response = Password::sendResetLink($request->only('email'));
+
+    if ($response == Password::RESET_LINK_SENT) {
+        return response()->json(['message' => __($response)], 200);
+    } else {
+        // Renvoyer une erreur plus spécifique
+        return response()->json(['error' => __('user-not-found')], 404); 
+    }
+}
 
     
 }
