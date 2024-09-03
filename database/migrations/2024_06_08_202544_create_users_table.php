@@ -21,10 +21,16 @@ class CreateUsersTable extends Migration
             $table->string('google_id'); // Added google
             $table->string('avatar')->nullable(); // Added google
             
+            $table->string('first_name', 100)->nullable();
+            $table->string('address')->nullable();
+            $table->string('postal_code', 8)->nullable();
+            $table->string('phone', 20)->nullable();
+            
+            
             $table->string('role', 255)->default('user');
             $table->rememberToken();
             $table->timestamps();
-            $table->tinyInteger('role_id')->unsigned()->default(2)->comment('1: Administrateur, 2: Utilisateur');
+            $table->tinyInteger('role_id')->unsigned()->default(2)->comment('1: Administrateur, 2: Utilisateur, 3: Professionnel');
         });
 
         // Insérer un compte administrateur unique

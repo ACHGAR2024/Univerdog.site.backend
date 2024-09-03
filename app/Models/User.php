@@ -8,12 +8,17 @@ use Illuminate\Notifications\Notifiable;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 use Laravel\Passport\HasApiTokens;
 
+use Illuminate\Contracts\Auth\CanResetPassword;
+use Illuminate\Auth\Passwords\CanResetPassword as CanResetPasswordTrait;
+
 class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    use CanResetPasswordTrait;
+    
     protected $fillable = [
-        'name', 'image', 'email', 'email_verified_at', 'password', 'role', 'google_id', 'avatar', 
+        'name', 'image', 'email', 'email_verified_at', 'password', 'role', 'google_id', 'avatar', 'first_name', 'address', 'postal_code', 'phone',
     ];
 
     protected $hidden = [

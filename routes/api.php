@@ -23,9 +23,9 @@ Route::get('auth/google', [AuthController::class, 'redirectToAuth']);
 Route::get('auth/callback', [AuthController::class, 'handleAuthCallback']);
 Route::post('loginGoogle', [AuthController::class, 'loginWithGoogle']);
 
-//Route::post('/forgotpw', [AuthController::class, 'forgotPassword']);
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+Route::post('/forgotpw/{email}', [AuthController::class, 'forgotPassword']);
+//Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+//Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 
 

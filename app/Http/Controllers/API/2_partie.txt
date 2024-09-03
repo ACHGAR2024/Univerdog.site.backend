@@ -1,0 +1,73 @@
+php artisan make:migration create_notifications_table
+php artisan make:migration create_review_table
+php artisan make:migration create_professionals_table
+php artisan make:migration create_availability_table
+php artisan make:migration create_specialty_table
+php artisan make:migration create_dogs_table
+php artisan make:migration create_appointments_table
+php artisan make:migration create_products_category_table
+php artisan make:migration create_products_table
+php artisan make:migration create_dogs_photos_table
+php artisan make:migration create_products_photos_table
+
+
+php artisan make:seeder NotificationSeeder
+php artisan migrate
+php artisan db:seed --class=NotificationSeeder
+
+php artisan make:model Notification
+php artisan make:model Review
+php artisan make:model Professional
+php artisan make:model Availability
+php artisan make:model Specialty
+php artisan make:model Dog
+php artisan make:model Appointment
+php artisan make:model ProductsCategory
+php artisan make:model Product
+php artisan make:model DogsPhoto
+php artisan make:model ProductsPhoto
+
+//////////////// Professional /////////////////
+public function user()
+{
+    return $this->belongsTo(User::class);
+}
+
+public function place()
+{
+    return $this->belongsTo(Place::class);
+}
+
+public function specialties()
+{
+    return $this->hasMany(Specialty::class);
+}
+//////////////////////////////////////////////
+
+php artisan make:controller API/NotificationController --api
+php artisan make:controller API/ReviewController --api
+php artisan make:controller API/ProfessionalController --api
+php artisan make:controller API/AvailabilityController --api
+php artisan make:controller API/SpecialtyController --api
+php artisan make:controller API/DogController --api
+php artisan make:controller API/AppointmentController --api
+php artisan make:controller API/ProductsCategoryController --api
+php artisan make:controller API/ProductController --api
+php artisan make:controller API/DogsPhotoController --api
+php artisan make:controller API/ProductsPhotoController --api
+
+Route::apiResource('notifications', API\NotificationController::class);
+Route::apiResource('reviews', API\ReviewController::class);
+Route::apiResource('professionals', API\ProfessionalController::class);
+Route::apiResource('availabilities', API\AvailabilityController::class);
+Route::apiResource('specialties', API\SpecialtyController::class);
+Route::apiResource('dogs', API\DogController::class);
+Route::apiResource('appointments', API\AppointmentController::class);
+Route::apiResource('products-categories', API\ProductsCategoryController::class);
+Route::apiResource('products', API\ProductController::class);
+Route::apiResource('dogs-photos', API\DogsPhotoController::class);
+Route::apiResource('products-photos', API\ProductsPhotoController::class);
+
+/////////////////////
+Tester avec Postman
+/////////////////////

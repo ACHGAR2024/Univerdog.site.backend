@@ -21,6 +21,12 @@ use Illuminate\Session\Middleware\StartSession;
 
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Password as PasswordFacade;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ResetPasswordMail;
+
+
+use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class AuthController extends Controller
 {
@@ -262,7 +268,34 @@ public function handleGoogleLogin(Request $request)
     return response()->json($responseData, 200);
 }
 
+public function updateAdditionalInfo(Request $request, User $user)
+    {
+        // Récupère l'utilisateur authentifié
+        $authenticatedUser = Auth::user();
 
+        // Vérifie que l'utilisateur authentifié peut effectuer cette action
+        if ($authenticatedUser->id !== $user->id) {
+            return response()->json(['error' => 'Unauthorized'], 403);
+        }
+
+        // Validation des nouvelles données reçues
+        $request->validate([
+            'first_name' => 'sometimes|string|max:100',
+            'address' => 'sometimes|string|nullable',
+            'postal_code' => 'sometimes|string|max:8|nullable',
+            'phone' => 'sometimes|string|max:20|nullable',
+        ]);
+
+        // Mise à jour des informations supplémentaires de l'utilisateur
+        $input = $request->only('first_name', 'address', 'postal_code', 'phone');
+        $user->update($input);
+
+        // Retourner une réponse JSON avec l'utilisateur mis à jour et un message de succès
+        return response()->json([
+            'user' => $user,
+            'message' => 'Informations mises à jour avec succès'
+        ], 200);
+    }
     public function destroy(User $user)
     {
         $authenticatedUser = Auth::user();
@@ -303,19 +336,31 @@ public function updateRole(Request $request, $id)
 }
  
         
-public function forgotPassword(Request $request)
-{
-    $request->validate(['email' => 'required|email']);
+public function forgotPassword(Request $request, $email)
+    {
+        $user = User::where('email', $email)->first();
 
-    $response = Password::sendResetLink($request->only('email'));
+        if (!$user) {
+            return response()->json(['message' => 'Email non trouvé.'], 404);
+        }
 
-    if ($response == Password::RESET_LINK_SENT) {
-        return response()->json(['message' => __($response)], 200);
-    } else {
-        // Renvoyer une erreur plus spécifique
-        return response()->json(['error' => __('user-not-found')], 404); 
+        // Générer un token unique
+        $token = Str::random(60);
+
+        // Enregistrer le token dans la base de données
+        DB::table('password_reset_tokens')->insert([
+            'email' => $email,
+            'token' => $token,
+            'created_at' => Carbon::now()
+        ]);
+
+        // Vous pouvez ici envoyer un email à l'utilisateur avec le lien de réinitialisation
+        // contenant le token. 
+        // Exemple : http://votre-domaine.com/reset-password/{token}
+        Mail::to($email)->send(new ResetPasswordMail($token, $email));
+
+        return response()->json(['message' => 'Un email de réinitialisation de mot de passe a été envoyé. valable pour 60 minutes.', 'token' => $token], 200);
     }
-}
 
     
 }
