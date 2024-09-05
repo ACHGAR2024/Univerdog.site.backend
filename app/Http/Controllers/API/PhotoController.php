@@ -86,7 +86,7 @@ class PhotoController extends Controller
         $photo = Photo::where('place_id', $placeId)->where('id', $photoId)->firstOrFail();
 
         if ($request->hasFile('photo')) {
-            // Supprimer l'ancienne photo
+            // Supprimer l'ancienne photo 
             if (Storage::exists(str_replace('/storage/', '', $photo->photo_path))) {
                 Storage::delete(str_replace('/storage/', '', $photo->photo_path));
             }

@@ -13,6 +13,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name_cat');
             $table->timestamps();
         });
+        
     }
 
     public function down()

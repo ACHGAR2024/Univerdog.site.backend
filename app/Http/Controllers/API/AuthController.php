@@ -41,25 +41,25 @@ class AuthController extends Controller
     
         if (!$user) {
             // L'utilisateur n'existe pas, retourner une erreur 404 (Not Found)
-        return response()->json(['error' => 'Compte inexistant'], 404);
+            return response()->json(['error' => 'Compte inexistant'], 404);
         }
     
         // Vérifier si l'utilisateur se connecte via Google
-        if ($user->google_id === $googleId) {
-            // Authentifier l'utilisateur et générer un token
-            $tokenResult = $user->createToken('Personal Access Token'); // Correction ici
-            $token = $tokenResult->accessToken; // Accéder au token correctement
-    
+        if ($user) {
+            Auth::login($user);
+            $token = Auth::guard('api')->login($user);
             return response()->json([
                 'user' => $user,
                 'access_token' => $token,
                 'token_type' => 'Bearer',
-                'expires_in' => 3600
+                'expires_in' => auth()->factory()->getTTL() * 60
             ]);
         }
+        
     
         return response()->json(['message' => 'Authentification Google échouée'], 401);
     }
+    
     
     public function redirectToAuth()
     {
@@ -75,6 +75,7 @@ class AuthController extends Controller
     public function handleAuthCallback()
     {
         try {
+            // Récupérer les informations de l'utilisateur via Google
             $socialiteUser = Socialite::driver('google')
                 ->stateless()
                 ->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))
@@ -83,35 +84,32 @@ class AuthController extends Controller
             return response()->json(['error' => 'Invalid credentials provided.'], 422);
         }
     
-        // Find or create the user
-        $user = User::query()->firstOrCreate(
+        // Trouver ou créer l'utilisateur dans votre base de données
+        $user = User::firstOrCreate(
             ['email' => $socialiteUser->getEmail()],
             [
                 'email_verified_at' => now(),
                 'name' => $socialiteUser->getName(),
                 'google_id' => $socialiteUser->getId(),
                 'avatar' => $socialiteUser->getAvatar(),
-                'password' => bcrypt('temporary_password'), // Adding a temporary password
+                'password' => bcrypt(Str::random(16)), // Générer un mot de passe aléatoire
             ]
         );
     
-        // Log in the user
+        // Authentifier l'utilisateur
         Auth::login($user);
     
-        // Generate the token
-        $tokenResult = $user->createToken('google-token');
-        $token = $tokenResult->accessToken; // Correctly accessing the token
+        // Générer le token JWT pour l'utilisateur
+        $token = Auth::user()->createToken('Personal Access Token')->accessToken;
     
-        // Redirect to /dashboard with the token in a query parameter
-        return redirect('http://localhost:5173/login');
-
-       /*return response()->json([
+        return response()->json([
             'user' => $user,
             'access_token' => $token,
             'token_type' => 'Bearer',
-            'expires_in' => Auth::factory()->getTTL() * 60,
-        ]);*/
+            'expires_in' => 3600
+        ]);
     }
+    
     
 
 

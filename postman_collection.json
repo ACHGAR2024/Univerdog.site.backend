@@ -5,11 +5,12 @@
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
+        
         {
-            "name": "Register",
+            "name": "Google-login",
             "item": [
                 {
-                    "name": "Register-POST",
+                    "name": "Google-login-POST",
                     "request": {
                         "method": "POST",
                         "header": [],
@@ -18,13 +19,13 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/register",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/google-login",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "register"
+                                "google-login"
                             ]
                         }
                     }
@@ -32,36 +33,10 @@
             ]
         },
         {
-            "name": "Login",
+            "name": "Dashboard",
             "item": [
                 {
-                    "name": "Login-POST",
-                    "request": {
-                        "method": "POST",
-                        "header": [],
-                        "body": {
-                            "mode": "raw",
-                            "raw": ""
-                        },
-                        "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/login",
-                            "host": [
-                                "http:\/\/127.0.0.1:8000"
-                            ],
-                            "path": [
-                                "api",
-                                "login"
-                            ]
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "name": "User",
-            "item": [
-                {
-                    "name": "User-GET",
+                    "name": "Dashboard-GET",
                     "request": {
                         "method": "GET",
                         "header": [],
@@ -70,20 +45,24 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/user\/{user}",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/dashboard",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "user",
-                                "{user}"
+                                "dashboard"
                             ]
                         }
                     }
-                },
+                }
+            ]
+        },
+        {
+            "name": "Auth",
+            "item": [
                 {
-                    "name": "User-GET",
+                    "name": "Auth-GET",
                     "request": {
                         "method": "GET",
                         "header": [],
@@ -92,13 +71,36 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/user",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/auth\/google",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "user"
+                                "auth",
+                                "google"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Auth-GET",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/auth\/callback",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "callback"
                             ]
                         }
                     }
@@ -106,10 +108,10 @@
             ]
         },
         {
-            "name": "Places",
+            "name": "LoginGoogle",
             "item": [
                 {
-                    "name": "Places-POST",
+                    "name": "LoginGoogle-POST",
                     "request": {
                         "method": "POST",
                         "header": [],
@@ -118,19 +120,73 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/places",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/loginGoogle",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "places"
+                                "loginGoogle"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Forgotpw",
+            "item": [
+                {
+                    "name": "Forgotpw-POST",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/forgotpw\/{email}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "forgotpw",
+                                "{email}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+      
+        {
+            "name": "Notifications",
+            "item": [
+                {
+                    "name": "Notifications-POST",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/notifications",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "notifications"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Places-PUT",
+                    "name": "Notifications-PUT",
                     "request": {
                         "method": "PUT",
                         "header": [],
@@ -139,20 +195,20 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/places\/{place}",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/notifications\/{notification}",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "places",
-                                "{place}"
+                                "notifications",
+                                "{notification}"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Places-DELETE",
+                    "name": "Notifications-DELETE",
                     "request": {
                         "method": "DELETE",
                         "header": [],
@@ -161,20 +217,68 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/places\/{place}",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/notifications\/{notification}",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "places",
-                                "{place}"
+                                "notifications",
+                                "{notification}"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Places-POST",
+                    "name": "Notifications-GET",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/notifications",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "notifications"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Notifications-GET",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/notifications\/{notification}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "notifications",
+                                "{notification}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Reviews",
+            "item": [
+                {
+                    "name": "Reviews-POST",
                     "request": {
                         "method": "POST",
                         "header": [],
@@ -183,68 +287,19 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/places\/{place}\/photos",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/reviews",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "places",
-                                "{place}",
-                                "photos"
+                                "reviews"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Places-GET",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "body": {
-                            "mode": "raw",
-                            "raw": ""
-                        },
-                        "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/places\/{place}\/photos",
-                            "host": [
-                                "http:\/\/127.0.0.1:8000"
-                            ],
-                            "path": [
-                                "api",
-                                "places",
-                                "{place}",
-                                "photos"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Places-GET",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "body": {
-                            "mode": "raw",
-                            "raw": ""
-                        },
-                        "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/places\/{place}\/photos\/{photo}",
-                            "host": [
-                                "http:\/\/127.0.0.1:8000"
-                            ],
-                            "path": [
-                                "api",
-                                "places",
-                                "{place}",
-                                "photos",
-                                "{photo}"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Places-PUT",
+                    "name": "Reviews-PUT",
                     "request": {
                         "method": "PUT",
                         "header": [],
@@ -253,22 +308,20 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/places\/{place}\/photos\/{photo}",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/reviews\/{review}",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "places",
-                                "{place}",
-                                "photos",
-                                "{photo}"
+                                "reviews",
+                                "{review}"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Places-DELETE",
+                    "name": "Reviews-DELETE",
                     "request": {
                         "method": "DELETE",
                         "header": [],
@@ -277,22 +330,20 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/places\/{place}\/photos\/{photo}",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/reviews\/{review}",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "places",
-                                "{place}",
-                                "photos",
-                                "{photo}"
+                                "reviews",
+                                "{review}"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Places-GET",
+                    "name": "Reviews-GET",
                     "request": {
                         "method": "GET",
                         "header": [],
@@ -301,19 +352,19 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/places",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/reviews",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "places"
+                                "reviews"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Places-GET",
+                    "name": "Reviews-GET",
                     "request": {
                         "method": "GET",
                         "header": [],
@@ -322,37 +373,14 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/places\/{place}",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/reviews\/{review}",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "places",
-                                "{place}"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Places-GET",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "body": {
-                            "mode": "raw",
-                            "raw": ""
-                        },
-                        "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/places\/category\/{categoryId}",
-                            "host": [
-                                "http:\/\/127.0.0.1:8000"
-                            ],
-                            "path": [
-                                "api",
-                                "places",
-                                "category",
-                                "{categoryId}"
+                                "reviews",
+                                "{review}"
                             ]
                         }
                     }
@@ -360,10 +388,10 @@
             ]
         },
         {
-            "name": "Categories",
+            "name": "Professionals",
             "item": [
                 {
-                    "name": "Categories-POST",
+                    "name": "Professionals-POST",
                     "request": {
                         "method": "POST",
                         "header": [],
@@ -372,19 +400,19 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/categories",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/professionals",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "categories"
+                                "professionals"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Categories-PUT",
+                    "name": "Professionals-PUT",
                     "request": {
                         "method": "PUT",
                         "header": [],
@@ -393,20 +421,585 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/categories\/{category}",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/professionals\/{professional}",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "categories",
+                                "professionals",
+                                "{professional}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Professionals-DELETE",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/professionals\/{professional}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "professionals",
+                                "{professional}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Professionals-GET",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/professionals",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "professionals"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Professionals-GET",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/professionals\/{professional}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "professionals",
+                                "{professional}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Availabilities",
+            "item": [
+                {
+                    "name": "Availabilities-POST",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/availabilities",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "availabilities"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Availabilities-PUT",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/availabilities\/{availability}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "availabilities",
+                                "{availability}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Availabilities-DELETE",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/availabilities\/{availability}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "availabilities",
+                                "{availability}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Availabilities-GET",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/availabilities",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "availabilities"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Availabilities-GET",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/availabilities\/{availability}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "availabilities",
+                                "{availability}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Specialties",
+            "item": [
+                {
+                    "name": "Specialties-POST",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/specialties",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "specialties"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Specialties-PUT",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/specialties\/{specialty}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "specialties",
+                                "{specialty}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Specialties-DELETE",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/specialties\/{specialty}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "specialties",
+                                "{specialty}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Specialties-GET",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/specialties",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "specialties"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Specialties-GET",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/specialties\/{specialty}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "specialties",
+                                "{specialty}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Dogs",
+            "item": [
+                {
+                    "name": "Dogs-POST",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/dogs",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "dogs"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Dogs-PUT",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/dogs\/{dog}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "dogs",
+                                "{dog}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Dogs-DELETE",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/dogs\/{dog}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "dogs",
+                                "{dog}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Dogs-GET",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/dogs",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "dogs"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Dogs-GET",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/dogs\/{dog}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "dogs",
+                                "{dog}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Appointments",
+            "item": [
+                {
+                    "name": "Appointments-POST",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/appointments",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "appointments"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Appointments-PUT",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/appointments\/{appointment}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "appointments",
+                                "{appointment}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Appointments-DELETE",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/appointments\/{appointment}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "appointments",
+                                "{appointment}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Appointments-GET",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/appointments",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "appointments"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Appointments-GET",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/appointments\/{appointment}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "appointments",
+                                "{appointment}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Products-categories",
+            "item": [
+                {
+                    "name": "Products-categories-POST",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/products-categories",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "products-categories"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Products-categories-PUT",
+                    "request": {
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/products-categories\/{category}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "products-categories",
                                 "{category}"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Categories-DELETE",
+                    "name": "Products-categories-DELETE",
                     "request": {
                         "method": "DELETE",
                         "header": [],
@@ -415,20 +1008,20 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/categories\/{category}",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/products-categories\/{category}",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "categories",
+                                "products-categories",
                                 "{category}"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Categories-GET",
+                    "name": "Products-categories-GET",
                     "request": {
                         "method": "GET",
                         "header": [],
@@ -437,19 +1030,19 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/categories",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/products-categories",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "categories"
+                                "products-categories"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Categories-GET",
+                    "name": "Products-categories-GET",
                     "request": {
                         "method": "GET",
                         "header": [],
@@ -458,13 +1051,13 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/categories\/{category}",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/products-categories\/{category}",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "categories",
+                                "products-categories",
                                 "{category}"
                             ]
                         }
@@ -473,10 +1066,10 @@
             ]
         },
         {
-            "name": "Messages",
+            "name": "Products",
             "item": [
                 {
-                    "name": "Messages-POST",
+                    "name": "Products-POST",
                     "request": {
                         "method": "POST",
                         "header": [],
@@ -485,132 +1078,19 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/messages",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/products",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "messages"
+                                "products"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Messages-POST",
-                    "request": {
-                        "method": "POST",
-                        "header": [],
-                        "body": {
-                            "mode": "raw",
-                            "raw": ""
-                        },
-                        "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/messages\/favorite",
-                            "host": [
-                                "http:\/\/127.0.0.1:8000"
-                            ],
-                            "path": [
-                                "api",
-                                "messages",
-                                "favorite"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Messages-POST",
-                    "request": {
-                        "method": "POST",
-                        "header": [],
-                        "body": {
-                            "mode": "raw",
-                            "raw": ""
-                        },
-                        "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/messages\/report",
-                            "host": [
-                                "http:\/\/127.0.0.1:8000"
-                            ],
-                            "path": [
-                                "api",
-                                "messages",
-                                "report"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Messages-GET",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "body": {
-                            "mode": "raw",
-                            "raw": ""
-                        },
-                        "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/messages",
-                            "host": [
-                                "http:\/\/127.0.0.1:8000"
-                            ],
-                            "path": [
-                                "api",
-                                "messages"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Messages-DELETE",
-                    "request": {
-                        "method": "DELETE",
-                        "header": [],
-                        "body": {
-                            "mode": "raw",
-                            "raw": ""
-                        },
-                        "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/messages\/{message}",
-                            "host": [
-                                "http:\/\/127.0.0.1:8000"
-                            ],
-                            "path": [
-                                "api",
-                                "messages",
-                                "{message}"
-                            ]
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Events",
-            "item": [
-                {
-                    "name": "Events-POST",
-                    "request": {
-                        "method": "POST",
-                        "header": [],
-                        "body": {
-                            "mode": "raw",
-                            "raw": ""
-                        },
-                        "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/events",
-                            "host": [
-                                "http:\/\/127.0.0.1:8000"
-                            ],
-                            "path": [
-                                "api",
-                                "events"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Events-PUT",
+                    "name": "Products-PUT",
                     "request": {
                         "method": "PUT",
                         "header": [],
@@ -619,20 +1099,20 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/events\/{event}",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/products\/{product}",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "events",
-                                "{event}"
+                                "products",
+                                "{product}"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Events-DELETE",
+                    "name": "Products-DELETE",
                     "request": {
                         "method": "DELETE",
                         "header": [],
@@ -641,20 +1121,20 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/events\/{event}",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/products\/{product}",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "events",
-                                "{event}"
+                                "products",
+                                "{product}"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Events-GET",
+                    "name": "Products-GET",
                     "request": {
                         "method": "GET",
                         "header": [],
@@ -663,19 +1143,19 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/events",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/products",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "events"
+                                "products"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Events-GET",
+                    "name": "Products-GET",
                     "request": {
                         "method": "GET",
                         "header": [],
@@ -684,14 +1164,14 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/events\/{event}",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/products\/{product}",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "events",
-                                "{event}"
+                                "products",
+                                "{product}"
                             ]
                         }
                     }
@@ -699,10 +1179,10 @@
             ]
         },
         {
-            "name": "Places_reservations",
+            "name": "Dogs-photos",
             "item": [
                 {
-                    "name": "Places_reservations-POST",
+                    "name": "Dogs-photos-POST",
                     "request": {
                         "method": "POST",
                         "header": [],
@@ -711,19 +1191,19 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/places_reservations",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/dogs-photos",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "places_reservations"
+                                "dogs-photos"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Places_reservations-PUT",
+                    "name": "Dogs-photos-PUT",
                     "request": {
                         "method": "PUT",
                         "header": [],
@@ -732,20 +1212,20 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/places_reservations\/{reservation}",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/dogs-photos\/{dogsPhoto}",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "places_reservations",
-                                "{reservation}"
+                                "dogs-photos",
+                                "{dogsPhoto}"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Places_reservations-DELETE",
+                    "name": "Dogs-photos-DELETE",
                     "request": {
                         "method": "DELETE",
                         "header": [],
@@ -754,20 +1234,20 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/places_reservations\/{reservation}",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/dogs-photos\/{dogsPhoto}",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "places_reservations",
-                                "{reservation}"
+                                "dogs-photos",
+                                "{dogsPhoto}"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Places_reservations-GET",
+                    "name": "Dogs-photos-GET",
                     "request": {
                         "method": "GET",
                         "header": [],
@@ -776,19 +1256,19 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/places_reservations",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/dogs-photos",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "places_reservations"
+                                "dogs-photos"
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Places_reservations-GET",
+                    "name": "Dogs-photos-GET",
                     "request": {
                         "method": "GET",
                         "header": [],
@@ -797,14 +1277,14 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/places_reservations\/{reservation}",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/dogs-photos\/{dogsPhoto}",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "places_reservations",
-                                "{reservation}"
+                                "dogs-photos",
+                                "{dogsPhoto}"
                             ]
                         }
                     }
@@ -812,58 +1292,10 @@
             ]
         },
         {
-            "name": "Users",
+            "name": "Products-photos",
             "item": [
                 {
-                    "name": "Users-GET",
-                    "request": {
-                        "method": "GET",
-                        "header": [],
-                        "body": {
-                            "mode": "raw",
-                            "raw": ""
-                        },
-                        "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/users",
-                            "host": [
-                                "http:\/\/127.0.0.1:8000"
-                            ],
-                            "path": [
-                                "api",
-                                "users"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Users-DELETE",
-                    "request": {
-                        "method": "DELETE",
-                        "header": [],
-                        "body": {
-                            "mode": "raw",
-                            "raw": ""
-                        },
-                        "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/users\/{user}",
-                            "host": [
-                                "http:\/\/127.0.0.1:8000"
-                            ],
-                            "path": [
-                                "api",
-                                "users",
-                                "{user}"
-                            ]
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Logout",
-            "item": [
-                {
-                    "name": "Logout-POST",
+                    "name": "Products-photos-POST",
                     "request": {
                         "method": "POST",
                         "header": [],
@@ -872,24 +1304,19 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/logout",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/products-photos",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "logout"
+                                "products-photos"
                             ]
                         }
                     }
-                }
-            ]
-        },
-        {
-            "name": "Update",
-            "item": [
+                },
                 {
-                    "name": "Update-PUT",
+                    "name": "Products-photos-PUT",
                     "request": {
                         "method": "PUT",
                         "header": [],
@@ -898,14 +1325,79 @@
                             "raw": ""
                         },
                         "url": {
-                            "raw": "http:\/\/127.0.0.1:8000\/api\/update\/{user}",
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/products-photos\/{productsPhoto}",
                             "host": [
                                 "http:\/\/127.0.0.1:8000"
                             ],
                             "path": [
                                 "api",
-                                "update",
-                                "{user}"
+                                "products-photos",
+                                "{productsPhoto}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Products-photos-DELETE",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/products-photos\/{productsPhoto}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "products-photos",
+                                "{productsPhoto}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Products-photos-GET",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/products-photos",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "products-photos"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Products-photos-GET",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
+                        "url": {
+                            "raw": "http:\/\/127.0.0.1:8000\/api\/products-photos\/{productsPhoto}",
+                            "host": [
+                                "http:\/\/127.0.0.1:8000"
+                            ],
+                            "path": [
+                                "api",
+                                "products-photos",
+                                "{productsPhoto}"
                             ]
                         }
                     }

@@ -16,6 +16,7 @@ class AddTelephoneToPlacesReservationsTable extends Migration
         Schema::table('places_reservations', function (Blueprint $table) {
             $table->string('telephone')->nullable()->after('address_place');
         });
+        
     }
 
     /**

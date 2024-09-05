@@ -48,4 +48,10 @@ class Place extends Model
     {
         return $this->belongsToMany(Category::class, 'ad_categories', 'place_id', 'category_id');
     }
+
+   
+    public function professionals()
+    {
+        return $this->hasMany(Professional::class, 'place_id');
+    }
 }

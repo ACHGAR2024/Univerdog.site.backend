@@ -1,0 +1,15 @@
+php artisan db:seed --class=CombinedSeeder
+php artisan db:seed --class=NotificationSeeder
+php artisan db:seed --class=ProfessionalSeeder
+php artisan db:seed --class=ReviewSeeder
+php artisan db:seed --class=AvailabilitySeeder
+
+php artisan db:seed --class=DogSeeder
+
+php artisan db:seed --class=ProductsCategorySeeder
+php artisan db:seed --class=ProductsSeeder
+php artisan db:seed --class=DogsPhotosSeeder
+php artisan db:seed --class=ProductsPhotosSeeder
+
+php artisan db:seed --class=SpecialtySeeder
+php artisan db:seed --class=AppointmentSeeder

@@ -53,4 +53,35 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(Message::class);
     }
+
+/**
+     * Obtenir les notifications associées à l'utilisateur.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class, 'user_id');
+    }
+
+    /**
+     * Obtenir les chiens associés à l'utilisateur.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function dogs()
+    {
+        return $this->hasMany(Dog::class, 'user_id');
+    }
+
+    /**
+     * Obtenir les professionnels associés à l'utilisateur.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function professionals()
+    {
+        return $this->hasMany(Professional::class, 'user_id');
+    }
+    
 }

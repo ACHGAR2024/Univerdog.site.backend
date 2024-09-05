@@ -13,6 +13,7 @@ class CreateAdCategoriesTable extends Migration
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->primary(['place_id', 'category_id']);
         });
+        
     }
 
     public function down()

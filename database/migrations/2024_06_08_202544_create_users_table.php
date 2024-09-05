@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             
             $table->string('password', 255)->nullable(); // Changed to nullable() google
-            $table->string('google_id'); // Added google
+            $table->string('google_id')->nullable(); // Added nullable()
             $table->string('avatar')->nullable(); // Added google
             
             $table->string('first_name', 100)->nullable();
@@ -32,6 +32,8 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->tinyInteger('role_id')->unsigned()->default(2)->comment('1: Administrateur, 2: Utilisateur, 3: Professionnel');
         });
+        
+        
 
         // Insérer un compte administrateur unique
         DB::table('users')->insert([

@@ -18,6 +18,7 @@ class CreateJobsTable extends Migration
             $table->unsignedInteger('created_at');
             $table->index('queue');
         });
+        
     }
 
     public function down()

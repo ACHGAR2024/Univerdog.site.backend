@@ -11,6 +11,17 @@ use App\Http\Controllers\API\EventController;
 use App\Http\Controllers\API\PlaceReservationController; 
 use App\Http\Controllers\DashboardController;
 
+use App\Http\Controllers\API\NotificationController;
+use App\Http\Controllers\API\ReviewController;
+use App\Http\Controllers\API\ProfessionalController;
+use App\Http\Controllers\API\AvailabilityController;
+use App\Http\Controllers\API\SpecialtyController;
+use App\Http\Controllers\API\DogController;
+use App\Http\Controllers\API\AppointmentController;
+use App\Http\Controllers\API\ProductsCategoryController;
+use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\API\DogsPhotoController;
+use App\Http\Controllers\API\ProductsPhotoController;
 
 
 // Authentication routes
@@ -27,7 +38,9 @@ Route::post('/forgotpw/{email}', [AuthController::class, 'forgotPassword']);
 //Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
 //Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
 
 // Route pour récupérer l'utilisateur actuellement authentifié
@@ -86,6 +99,67 @@ Route::middleware('auth:api')->group(function () {
     // Route pour mettre à jour le role de l'utilisateur
     Route::patch('users/{id}/role', [AuthController::class, 'updateRole']);
 
+
+// Routes pour les notifications
+Route::post('notifications', [NotificationController::class, 'store']);
+Route::put('notifications/{notification}', [NotificationController::class, 'update']);
+Route::delete('notifications/{notification}', [NotificationController::class, 'destroy']);
+ 
+// Routes pour les avis
+Route::post('reviews', [ReviewController::class, 'store']);
+Route::put('reviews/{review}', [ReviewController::class, 'update']);
+Route::delete('reviews/{review}', [ReviewController::class, 'destroy']);
+
+// Routes pour les professionnels
+Route::post('professionals', [ProfessionalController::class, 'store']);
+Route::put('professionals/{professional}', [ProfessionalController::class, 'update']);
+Route::delete('professionals/{professional}', [ProfessionalController::class, 'destroy']);
+
+
+// Routes pour les disponibilités
+Route::post('availability', [AvailabilityController::class, 'store']);
+Route::put('availability/{availability}', [AvailabilityController::class, 'update']);
+Route::delete('availability/{availability}', [AvailabilityController::class, 'destroy']);
+
+// Routes pour les spécialités
+Route::post('speciality', [SpecialtyController::class, 'store']);
+Route::put('speciality/{specialty}', [SpecialtyController::class, 'update']);
+Route::delete('speciality/{specialty}', [SpecialtyController::class, 'destroy']);
+
+// Routes pour les chiens
+Route::post('dogs', [DogController::class, 'store']);
+Route::put('dogs/{dog}', [DogController::class, 'update']);
+Route::delete('dogs/{dog}', [DogController::class, 'destroy']);
+
+// Routes pour les rendez-vous
+Route::post('appointments', [AppointmentController::class, 'store']);
+Route::put('appointments/{appointment}', [AppointmentController::class, 'update']);
+Route::delete('appointments/{appointment}', [AppointmentController::class, 'destroy']);
+
+// Routes pour les catégories de produits
+Route::post('products-categories', [ProductsCategoryController::class, 'store']);
+Route::put('products-categories/{category}', [ProductsCategoryController::class, 'update']);
+Route::delete('products-categories/{category}', [ProductsCategoryController::class, 'destroy']);
+
+// Routes pour les produits
+Route::post('products', [ProductController::class, 'store']);
+Route::put('products/{product}', [ProductController::class, 'update']);
+Route::delete('products/{product}', [ProductController::class, 'destroy']);
+
+// Routes pour les photos de chiens
+Route::post('dogs-photos', [DogsPhotoController::class, 'store']);
+Route::put('dogs-photos/{dogsPhoto}', [DogsPhotoController::class, 'update']);
+Route::delete('dogs-photos/{dogsPhoto}', [DogsPhotoController::class, 'destroy']);
+
+
+// Routes pour les photos de produits
+Route::post('products-photos', [ProductsPhotoController::class, 'store']);
+Route::put('products-photos/{productsPhoto}', [ProductsPhotoController::class, 'update']);
+Route::delete('products-photos/{productsPhoto}', [ProductsPhotoController::class, 'destroy']);
+
+
+
+
     //Fin des routes avec middleware
     
 });
@@ -117,7 +191,56 @@ Route::get('places_reservations', [PlaceReservationController::class, 'index']);
 Route::get('places_reservations/{reservation}', [PlaceReservationController::class, 'show']);
 
 
-// Routes des catégories protégées par auth:api et admin role
+// Routes des notifications accessibles publiquement
+Route::get('notifications', [NotificationController::class, 'index']);
+Route::get('notifications/{notification}', [NotificationController::class, 'show']);
+
+
+// Routes des avis accessibles publiquement
+Route::get('reviews', [ReviewController::class, 'index']);
+Route::get('reviews/{review}', [ReviewController::class, 'show']);
+
+// Routes des professionnels accessibles publiquement
+Route::get('professionals', [ProfessionalController::class, 'index']);
+Route::get('professionals/{professional}', [ProfessionalController::class, 'show']);
+
+// Routes des disponibilités accessibles publiquement
+Route::get('availability', [AvailabilityController::class, 'index']);
+Route::get('availability/{availability}', [AvailabilityController::class, 'show']);
+
+// Routes des specialites accessibles publiquement
+Route::get('speciality', [SpecialtyController::class, 'index']);
+Route::get('speciality/{specialty}', [SpecialtyController::class, 'show']);
+
+// Routes des chiens accessibles publiquement
+Route::get('dogs', [DogController::class, 'index']);
+Route::get('dogs/{dog}', [DogController::class, 'show']);
+
+// Routes des rendez-vous accessibles publiquement
+Route::get('appointments', [AppointmentController::class, 'index']);
+Route::get('appointments/{appointment}', [AppointmentController::class, 'show']);
+
+// Routes des catégories de produits accessibles publiquement
+Route::get('products-categories', [ProductsCategoryController::class, 'index']);
+Route::get('products-categories/{category}', [ProductsCategoryController::class, 'show']);
+
+// Routes des produits accessibles publiquement
+Route::get('products', [ProductController::class, 'index']);
+Route::get('products/{product}', [ProductController::class, 'show']);
+
+// Routes des photos de chiens accessibles publiquement
+Route::get('dogs-photos', [DogsPhotoController::class, 'index']);
+Route::get('dogs-photos/{dogsPhoto}', [DogsPhotoController::class, 'show']);
+
+// Routes des photos de produits accessibles publiquement
+Route::get('products-photos', [ProductsPhotoController::class, 'index']);
+Route::get('products-photos/{productsPhoto}', [ProductsPhotoController::class, 'show']);
+
+
+
+
+
+// Routes  protégées par auth:api et admin role
 Route::middleware(['auth:api', 'role:admin'])->group(function () {
     // Des routes spécifiques aux admins ici
     

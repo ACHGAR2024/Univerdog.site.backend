@@ -28,7 +28,7 @@ class CombinedSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'first_name' => $faker->firstName,
                 'address' => $faker->address,
-                'postal_code' => $faker->postcode,
+                'postal_code' => substr($faker->postcode, 0, 5), // Tronquer à 5 caractères
                 'phone' => $faker->phoneNumber,
                 'role' => $faker->randomElement(['professionnel', 'user']),
                 'remember_token' => Str::random(10),

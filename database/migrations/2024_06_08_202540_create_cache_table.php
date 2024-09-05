@@ -13,6 +13,7 @@ class CreateCacheTable extends Migration
             $table->mediumText('value');
             $table->integer('expiration');
         });
+        
     }
 
     public function down()

@@ -72,9 +72,18 @@ public function currentUser()
     {
         return response()->json([
         'meta' => [
+            
         'code' => 200,
         'status' => 'success',
         'message' => 'User fetched successfully!',
+        'errors' => null,
+        'success' => true,
+        'timestamp' => time(),
+        'url' => url()->current(),
+        'ip' => request()->ip(),
+        'method' => request()->method(),
+        'headers' => request()->headers->all(),
+        'query' => request()->query(),
         ],
         'data' => [
         'user' => auth()->user(),

@@ -17,11 +17,8 @@ Route::post('/forgotpw', function (Request $request) {
                 : response()->json(['email' => __($response)], 400);
 });
 
-Auth::routes();
+//Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
 Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])->name('password.update');
-// agent@gmail.com
-// Agent2028
-// avant agent1234
