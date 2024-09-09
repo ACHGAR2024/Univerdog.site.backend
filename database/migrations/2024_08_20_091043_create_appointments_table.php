@@ -15,6 +15,7 @@ class CreateAppointmentsTable extends Migration
             $table->id();
             $table->date('date_appointment');  // Date du rendez-vous
             $table->time('time_appointment');  // Heure du rendez-vous
+            $table->string('reason');  // Raison du rendez-vous
             $table->string('status');  // Statut du rendez-vous (par exemple, "Confirmé", "Annulé")
             $table->foreignId('dog_id')->constrained('dogs')->onDelete('cascade');  // Clé étrangère vers la table dogs
             $table->foreignId('professional_id')->constrained('professionals')->onDelete('cascade');  // Clé étrangère vers la table professionals

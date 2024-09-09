@@ -20,7 +20,15 @@ class ProfessionalController extends Controller
         $professionals = Professional::all();
         return response()->json($professionals);
     }
+    public function index_pro(Request $request)
+{
+    $user = auth()->user();
 
+    // Fetch professionals where the user_id matches the logged-in user
+    $professionals = Professional::where('user_id', $user->id)->get();
+
+    return response()->json($professionals);
+}
     /**
      * Stocker un nouveau professionnel.
      *

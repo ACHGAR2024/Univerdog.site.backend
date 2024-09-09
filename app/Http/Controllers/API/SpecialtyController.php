@@ -14,7 +14,17 @@ class SpecialtyController extends Controller
         $specialties = Specialty::all();
         return response()->json($specialties);
     }
-
+    public function index_spe(Request $request)
+    {
+        $user = auth()->user();
+    
+        // Fetch specialties where the professional is related to the logged-in user
+        $specialties = Specialty::whereHas('professional', function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })->get();
+    
+        return response()->json($specialties);
+    }
     public function store(Request $request)
     {
         $validatedData = $request->validate([

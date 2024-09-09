@@ -19,7 +19,11 @@ class DogController extends Controller
         $dogs = Dog::all();
         return response()->json($dogs);
     }
-
+public function dogShowUser($id)
+{
+    $dogs = Dog::where('user_id', $id)->get();
+    return response()->json($dogs);
+}
     /**
      * Stocker un nouveau chien.
      *

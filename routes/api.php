@@ -202,23 +202,29 @@ Route::get('reviews/{review}', [ReviewController::class, 'show']);
 
 // Routes des professionnels accessibles publiquement
 Route::get('professionals', [ProfessionalController::class, 'index']);
+Route::get('professionals_pro', [ProfessionalController::class, 'index_pro']);
 Route::get('professionals/{professional}', [ProfessionalController::class, 'show']);
 
 // Routes des disponibilités accessibles publiquement
 Route::get('availability', [AvailabilityController::class, 'index']);
 Route::get('availability/{availability}', [AvailabilityController::class, 'show']);
+Route::get('availability_pro/{professional_id}', [availabilityController::class, 'showByProfessional']);
 
 // Routes des specialites accessibles publiquement
 Route::get('speciality', [SpecialtyController::class, 'index']);
+Route::get('speciality_spe', [SpecialtyController::class, 'index_spe']);
 Route::get('speciality/{specialty}', [SpecialtyController::class, 'show']);
 
 // Routes des chiens accessibles publiquement
 Route::get('dogs', [DogController::class, 'index']);
 Route::get('dogs/{dog}', [DogController::class, 'show']);
+Route::get('dogs_user/{user_id}', [DogController::class, 'dogShowUser']);
 
 // Routes des rendez-vous accessibles publiquement
 Route::get('appointments', [AppointmentController::class, 'index']);
 Route::get('appointments/{appointment}', [AppointmentController::class, 'show']);
+Route::get('appointments_pro/{professional_id}', [AppointmentController::class, 'showByProfessional']);
+Route::get('appointments_pro/{professional_id}/{dog_id}', [AppointmentController::class, 'showByProAndDog']);
 
 // Routes des catégories de produits accessibles publiquement
 Route::get('products-categories', [ProductsCategoryController::class, 'index']);

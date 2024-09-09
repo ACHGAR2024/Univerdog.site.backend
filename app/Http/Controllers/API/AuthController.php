@@ -106,7 +106,7 @@ class AuthController extends Controller
             'user' => $user,
             'access_token' => $token,
             'token_type' => 'Bearer',
-            'expires_in' => 3600
+            'expires_in' => 3600 // 1 heure en minutes
         ]);
     }
     
@@ -220,6 +220,10 @@ public function handleGoogleLogin(Request $request)
         'email' => 'sometimes|email|unique:users,email,' . $user->id,
         'password' => 'sometimes|string|min:6',
         'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048', // Taille maximale de 2MB pour les images
+        'first_name' => 'sometimes|string|max:100|nullable',
+        'address' => 'sometimes|string|nullable',
+        'postal_code' => 'sometimes|string|max:8|nullable',
+        'phone' => 'sometimes|string|max:20|nullable',
     ]);
 
     // Préparation des données à mettre à jour, en excluant potentiellement l'image
@@ -278,7 +282,7 @@ public function updateAdditionalInfo(Request $request, User $user)
 
         // Validation des nouvelles données reçues
         $request->validate([
-            'first_name' => 'sometimes|string|max:100',
+            'first_name' => 'sometimes|string|max:100|nullable',
             'address' => 'sometimes|string|nullable',
             'postal_code' => 'sometimes|string|max:8|nullable',
             'phone' => 'sometimes|string|max:20|nullable',
@@ -320,7 +324,7 @@ public function updateRole(Request $request, $id)
     }
 
     $validator = Validator::make($request->all(), [
-        'role' => 'required|string|in:user,agent'
+        'role' => 'required|string|in:user,professionnel'
     ]);
 
     if ($validator->fails()) {

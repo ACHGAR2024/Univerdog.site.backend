@@ -20,6 +20,25 @@ class AvailabilityController extends Controller
         return response()->json($availabilities);
     }
 
+
+/**
+     * Afficher une liste des disponibilités pour un professionnel spécifique.
+     *
+     * @param  int  $professional_id
+     * @return \Illuminate\Http\Response
+     */
+    public function showByProfessional($professional_id)
+    {
+        // Valider le professional_id
+        $availabilities = Availability::where('professional_id', $professional_id)->get();
+
+        if ($availabilities->isEmpty()) {
+            return response()->json(['message' => 'No availabilities found for this professional.'], Response::HTTP_NOT_FOUND);
+        }
+
+        return response()->json($availabilities);
+    }
+    
     /**
      * Stocker une nouvelle disponibilité.
      *

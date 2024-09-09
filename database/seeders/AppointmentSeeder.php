@@ -14,8 +14,9 @@ class AppointmentSeeder extends Seeder
     {
         DB::table('appointments')->insert([
             [
-                'date_appointment' => '2024-09-25',
+                'date_appointment' => '2024-09-15',
                 'time_appointment' => '10:00:00',
+                'reason' => 'Maladie et traumatisme',
                 'status' => 'Confirmé',
                 'dog_id' => 1,  // Assurez-vous que le chien avec cet ID existe
                 'professional_id' => 1,  // Assurez-vous que le professionnel avec cet ID existe
@@ -23,20 +24,22 @@ class AppointmentSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'date_appointment' => '2024-09-26',
+                'date_appointment' => '2024-09-14',
                 'time_appointment' => '14:30:00',
+                'reason' => 'Maladie chronique',
                 'status' => 'En attente',
-                'dog_id' => 2,  // Assurez-vous que le chien avec cet ID existe
+                'dog_id' => 1,  // Assurez-vous que le chien avec cet ID existe
                 'professional_id' => 1,  // Assurez-vous que le professionnel avec cet ID existe
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'date_appointment' => '2024-09-27',
+                'date_appointment' => '2024-09-01',
                 'time_appointment' => '09:15:00',
+                'reason' => 'Maladie sangrée',
                 'status' => 'Annulé',
-                'dog_id' => 3,  // Assurez-vous que le chien avec cet ID existe
-                'professional_id' => 2,  // Assurez-vous que le professionnel avec cet ID existe
+                'dog_id' => 1,  // Assurez-vous que le chien avec cet ID existe
+                'professional_id' => 1,  // Assurez-vous que le professionnel avec cet ID existe
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

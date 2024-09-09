@@ -21,6 +21,7 @@ class EventController extends Controller
     {
         // Validation des données de la requête
         $validatedData = $request->validate([
+            'type_event' => 'nullable|string|max:255',
             'title_event' => 'required|string|max:255',
             'content_event' => 'required|string',
             'event_date' => 'required|date',
@@ -28,6 +29,7 @@ class EventController extends Controller
             'address_event' => 'required|string|max:255',
             'price_event' => 'required|numeric',
             'photo_event' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'link_event' => 'nullable|string',
             'publication_date' => 'nullable|date',
             'user_id' => 'required|exists:users,id',
         ]);
@@ -62,6 +64,7 @@ class EventController extends Controller
 
         // Validation des données de la requête
         $request->validate([
+            'type_event' => 'nullable|string|max:255',
             'title_event' => 'required|string|max:255',
             'content_event' => 'required|string',
             'event_date' => 'required|date',
@@ -69,6 +72,7 @@ class EventController extends Controller
             'address_event' => 'required|string|max:255',
             'price_event' => 'nullable|numeric',
             'photo_event' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'link_event' => 'nullable|string|max:255',
             'publication_date' => 'nullable|date',
             'user_id' => 'required|exists:users,id',
         ]);
