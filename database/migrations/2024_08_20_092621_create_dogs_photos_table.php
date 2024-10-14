@@ -13,8 +13,8 @@ class CreateDogsPhotosTable extends Migration
     {
         Schema::create('dogs_photos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('dog_id')->constrained('dogs')->onDelete('cascade');  // Clé étrangère vers la table dogs
-            $table->string('photo_name_dog');  // Nom du fichier photo
+            $table->foreignId('dog_id')->constrained('dogs')->onDelete('cascade');  
+            $table->string('photo_name_dog'); 
             $table->timestamps();
         });
         

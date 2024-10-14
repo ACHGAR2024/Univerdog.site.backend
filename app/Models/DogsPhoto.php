@@ -9,19 +9,19 @@ class DogsPhoto extends Model
 {
     use HasFactory;
 
-    // Nom de la table associée au modèle
+    // Table name associated with the model
     protected $table = 'dogs_photos';
 
-    // Les attributs qui sont assignables en masse
+    // The attributes that are mass assignable
     protected $fillable = [
         'dog_id',
         'photo_name_dog',
     ];
 
-    // Déclaration des relations
+    // Declaration of relationships
 
     /**
-     * Définir la relation inverse avec le modèle Dog.
+     * Define the inverse relationship with the Dog model.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

@@ -13,10 +13,10 @@ class CreateAvailabilityTable extends Migration
     {
         Schema::create('availability', function (Blueprint $table) {
             $table->id();
-            $table->string('day');  // Jour de la disponibilité (par exemple, "Lundi" ou "Samedi")
-            $table->time('start_time');  // Heure de début
-            $table->time('end_time');  // Heure de fin
-            $table->foreignId('professional_id')->constrained('professionals')->onDelete('cascade');  // Clé étrangère vers la table professionals
+            $table->string('day');  // Day of the week (e.g. "Monday" or "Saturday")
+            $table->time('start_time');  // Start time
+            $table->time('end_time');  // End time
+            $table->foreignId('professional_id')->constrained('professionals')->onDelete('cascade');  // Foreign key to the professionals table
             $table->timestamps();
         });
         

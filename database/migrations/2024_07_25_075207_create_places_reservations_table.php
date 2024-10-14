@@ -18,7 +18,7 @@ class CreatePlacesReservationsTable extends Migration
             $table->date('reservation_start_date')->nullable();
             $table->date('reservation_end_date')->nullable();
             $table->unsignedInteger('id_events');
-            $table->timestamps(); // Ajoute les colonnes created_at et updated_at
+            $table->timestamps(); 
             $table->foreign('id_events')->references('id')->on('events')->onDelete('cascade');
         });
         

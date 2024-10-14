@@ -14,10 +14,10 @@ class Notification extends Model
 {
     use HasFactory;
 
-    // Nom de la table associée au modèle
+    // Name of table in database
     protected $table = 'notifications';
 
-    // Les attributs qui sont assignables en masse
+    // Fields that can be mass assigned
     protected $fillable = [
         'message',
         'date_notification',
@@ -25,10 +25,10 @@ class Notification extends Model
         'user_id',
     ];
 
-    // Déclaration des relations entre les tables
+    // Fields that can not be mass assigned
 
     /**
-     * Définir la relation inverse avec le modèle User.
+     * Define the relationship with the User model.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

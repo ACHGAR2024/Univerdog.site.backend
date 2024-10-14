@@ -9,63 +9,63 @@ use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
-    // Méthode pour récupérer toutes les catégories
+    // Method to retrieve all categories
     public function index()
     {
         $categories = Category::orderBy('created_at', 'desc')->get();
         return response()->json(['categories' => $categories]);
     }
 
-    // Méthode pour créer une nouvelle catégorie
+    // Method to create a new category
     public function store(Request $request)
     {
-        // Vérification que l'utilisateur est un administrateur
+        // Check that the user is an administrator
         if (Auth::user()->role !== 'admin') {
             return response()->json(['error' => 'Unauthorized'], 403);
         }
 
-        // Validation des données de la requête
+        // Validate the request data
         $request->validate([
             'name_cat' => 'required|string|max:255'
         ]);
 
-        // Création de la catégorie
+        // Create the category
         $category = Category::create($request->all());
 
         return response()->json(['category' => $category, 'message' => 'Category created successfully']);
     }
 
-    // Méthode pour afficher une catégorie spécifique
+    // Method to display a specific category
     public function show($id)
     {
         $category = Category::findOrFail($id);
         return response()->json(['category' => $category]);
     }
 
-    // Méthode pour mettre à jour une catégorie
+    // Method to update a category
     public function update(Request $request, $id)
     {
-        // Vérification que l'utilisateur est un administrateur
+        // Check that the user is an administrator
         if (Auth::user()->role !== 'admin') {
             return response()->json(['error' => 'Unauthorized'], 403);
         }
 
-        // Validation des données de la requête
+        // Validate the request data
         $request->validate([
             'name_cat' => 'required|string|max:255'
         ]);
 
-        // Mise à jour de la catégorie
+        // Update the category
         $category = Category::findOrFail($id);
         $category->update($request->all());
 
         return response()->json(['category' => $category, 'message' => 'Category updated successfully']);
     }
 
-    // Méthode pour supprimer une catégorie
+    // Method to delete a category
     public function destroy($id)
     {
-        // Vérification que l'utilisateur est un administrateur
+        // Check that the user is an administrator
         if (Auth::user()->role !== 'admin') {
             return response()->json(['error' => 'Unauthorized'], 403);
         }

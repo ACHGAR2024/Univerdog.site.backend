@@ -12,9 +12,9 @@ class CreateMessagesTable extends Migration
     public function up()
     {
         Schema::create('messages', function (Blueprint $table) {
-            $table->bigIncrements('id'); // Utilisez bigIncrements si nécessaire
-            $table->unsignedBigInteger('user_id'); // Assurez-vous que c'est bigInteger
-            $table->unsignedBigInteger('place_id'); // Assurez-vous que c'est bigInteger
+            $table->bigIncrements('id'); 
+            $table->unsignedBigInteger('user_id'); 
+            $table->unsignedBigInteger('place_id'); 
             $table->text('content');
             $table->string('status');
             $table->boolean('is_favorite')->default(false);

@@ -1,15 +1,23 @@
 <?php
 
-///////
-//////  
-////  1-    Dans le Terminal   		 php artisan make:command ExportRoutesToPostman
-///// 2-    Modifier            		 app\Console\Commands\ExportRoutesToPostman.php
-///// 3-    Dans le Terminal    	 php artisan export:postman-routes
-///// 4-    Récuperer à la racine 	 postman_collection.json
-///// 5-    Dans postman importer
-////
-////
-///////
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////                                                                                   /////
+///// 1-    Dans le Terminal   		 php artisan make:command ExportRoutesToPostman     /////
+///// 2-    Modifier            	 app\Console\Commands\ExportRoutesToPostman.php     /////
+///// 3-    Dans le Terminal    	 php artisan export:postman-routes                  /////
+///// 4-    Récuperer à la racine 	 postman_collection.json                            /////
+///// 5-    Importer dans Postman                                                       /////
+/////                                                                                   /////
+/////////////////////////////////////////////////////////////////////////////////////////////
+////                                                                                    /////
+//// 1-    In the Terminal   		 php artisan make:command ExportRoutesToPostman     /////
+//// 2-    Modify            		 app\Console\Commands\ExportRoutesToPostman.php     /////
+//// 3-    In the Terminal    	     php artisan export:postman-routes                  /////
+//// 4-    Retrieve at the root 	 postman_collection.json                            /////
+//// 5-    Import in Postman                                                            /////
+////                                                                                    /////
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 namespace App\Console\Commands;

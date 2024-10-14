@@ -9,17 +9,17 @@ use App\Models\Event;
 
 class PlaceReservationController extends Controller
 {
-    // Méthode pour récupérer toutes les réservations
+    // Method to get all reservations
     public function index()
     {
         $places_reservations = PlaceReservation::orderBy('created_at', 'desc')->get();
         return response()->json(['places_reservations' => $places_reservations]);
     }
 
-    // Méthode pour créer une nouvelle réservation
+    // Method to create a new reservation
     public function store(Request $request)
     {
-        // Validation des données de la requête
+        // Validation of the request data
         $request->validate([
             'name_place_tiket' => 'nullable|string|max:255',
             'address_place' => 'nullable|string|max:255',
@@ -29,26 +29,26 @@ class PlaceReservationController extends Controller
             'id_events' => 'required|exists:events,id',
         ]);
 
-        // Création de la réservation
+        // Creation of the reservation
         $reservation = PlaceReservation::create($request->all());
 
         return response()->json(['reservation' => $reservation, 'message' => 'Reservation created successfully']);
     }
 
-    // Méthode pour afficher une réservation spécifique
+    // Method to display a specific reservation
     public function show($id)
     {
         $reservation = PlaceReservation::findOrFail($id);
         return response()->json(['reservation' => $reservation]);
     }
 
-    // Méthode pour mettre à jour une réservation
+    // Method to update a reservation
     public function update(Request $request, $id)
     {
-        // Récupération de la réservation existante ou renvoie une erreur 404 si non trouvée
+        // Get the existing reservation or return a 404 error if not found
         $reservation = PlaceReservation::findOrFail($id);
 
-        // Validation des données de la requête
+        // Validation of the request data
         $request->validate([
             'name_place_tiket' => 'nullable|string|max:255',
             'address_place' => 'nullable|string|max:255',
@@ -58,14 +58,14 @@ class PlaceReservationController extends Controller
             'id_events' => 'required|exists:events,id',
         ]);
 
-        // Mise à jour de la réservation
+        // Update the reservation
         $reservation->update($request->all());
 
-        // Retourner une réponse JSON avec la réservation mise à jour et un message de succès
+        // Return a JSON response with the updated reservation and a success message
         return response()->json(['reservation' => $reservation, 'message' => 'Reservation updated successfully']);
     }
 
-    // Méthode pour supprimer une réservation
+    // Method to delete a reservation
     public function destroy($id)
     {
         $reservation = PlaceReservation::findOrFail($id);

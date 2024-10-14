@@ -10,18 +10,18 @@ use Illuminate\Http\Response;
 class ProductController extends Controller
 {
     /**
-     * Afficher une liste des produits.
+     * Display a listing of products.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $products = Product::with('category')->get(); // Inclut les relations si nécessaire
+        $products = Product::with('category')->orderByDesc('id')->get(); // Include relationships if necessary
         return response()->json($products);
     }
 
     /**
-     * Stocker un nouveau produit.
+     * Store a newly created product.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -41,7 +41,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Afficher un produit spécifique.
+     * Display the specified product.
      *
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
@@ -52,7 +52,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Mettre à jour un produit spécifique.
+     * Update the specified product.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Product  $product
@@ -73,7 +73,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Supprimer un produit spécifique.
+     * Remove the specified product.
      *
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response

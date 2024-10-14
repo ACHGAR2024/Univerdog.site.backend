@@ -13,10 +13,10 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->integer('rating');  // Note de la revue 
-            $table->text('comment')->nullable();  // Commentaire de la revue
-            $table->date('date_review');  // Date de la revue
-            $table->foreignId('professional_id')->constrained('professionals')->onDelete('cascade');  // Clé étrangère vers la table professionals
+            $table->integer('rating');  // Review rating
+            $table->text('comment')->nullable();  // Review comment
+            $table->date('date_review');  // Review date
+            $table->foreignId('professional_id')->constrained('professionals')->onDelete('cascade');  // Foreign key to the professionals table
             $table->timestamps();
         });
         

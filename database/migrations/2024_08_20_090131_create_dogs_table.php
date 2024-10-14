@@ -13,14 +13,14 @@ class CreateDogsTable extends Migration
     {
         Schema::create('dogs', function (Blueprint $table) {
             $table->id();
-            $table->string('name_dog');  // Nom du chien 
-            $table->string('breed');  // Race du chien
-            $table->date('birth_date');  // Date de naissance du chien
-            $table->decimal('weight', 5, 2);  // Poids du chien
-            $table->string('sex');  // Sexe du chien
-            $table->text('medical_info')->nullable();  // Informations médicales sur le chien, optionnelles
-            $table->string('qr_code')->nullable();  // QR code pour le chien, optionnel
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');  // Clé étrangère vers la table users
+            $table->string('name_dog');  // Dog's name 
+            $table->string('breed');  // Dog's breed
+            $table->date('birth_date');  // Dog's birth date
+            $table->decimal('weight', 5, 2);  // Dog's weight
+            $table->string('sex');  // Dog's sex
+            $table->text('medical_info')->nullable();  // Dog's medical informations, optional
+            $table->string('qr_code')->nullable();  // Dog's qr code, optional
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');  // Foreign key to the users table
             $table->timestamps();
         });
         

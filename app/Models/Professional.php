@@ -9,10 +9,10 @@ class Professional extends Model
 {
     use HasFactory;
 
-    // Nom de la table associée au modèle
+    // Table name associated with the model
     protected $table = 'professionals';
 
-    // Les attributs qui sont assignables en masse .
+    // Fillable attributes
     protected $fillable = [
         'company_name',
         'description_pro',
@@ -21,10 +21,10 @@ class Professional extends Model
         'place_id',
     ];
 
-    // Déclaration des relations
+    // Define relationships
 
     /**
-     * Obtenir les disponibilités associées au professionnel.
+     * Get the availabilities associated with the professional.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -32,9 +32,8 @@ class Professional extends Model
     {
         return $this->hasMany(Availability::class, 'professional_id');
     }
-
     /**
-     * Obtenir les spécialités associées au professionnel.
+     * Get the specialties associated with the professional.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -44,7 +43,7 @@ class Professional extends Model
     }
 
     /**
-     * Obtenir les rendez-vous associés au professionnel.
+     * Get the appointments associated with the professional.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -54,7 +53,7 @@ class Professional extends Model
     }
 
     /**
-     * Définir la relation avec le modèle User.
+     * Define the relationship with the User model.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -64,7 +63,7 @@ class Professional extends Model
     }
 
     /**
-     * Définir la relation avec le modèle Place.
+     * Define the relationship with the Place model.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

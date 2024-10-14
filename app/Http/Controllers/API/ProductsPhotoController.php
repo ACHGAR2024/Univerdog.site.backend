@@ -11,18 +11,18 @@ use Illuminate\Support\Facades\Storage;
 class ProductsPhotoController extends Controller
 {
     /**
-     * Afficher une liste des photos de produits.
+     * Display a listing of products photos.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $productsPhotos = ProductsPhoto::with('product')->get(); // Inclut les relations si nécessaire
+        $productsPhotos = ProductsPhoto::with('product')->get(); // Include relationships if necessary
         return response()->json($productsPhotos);
     }
 
     /**
-     * Stocker une nouvelle photo de produit.
+     * Store a newly created products photo.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -47,7 +47,7 @@ class ProductsPhotoController extends Controller
     }
 
     /**
-     * Afficher une photo de produit spécifique.
+     * Display the specified products photo.
      *
      * @param  \App\Models\ProductsPhoto  $productsPhoto
      * @return \Illuminate\Http\Response
@@ -58,7 +58,7 @@ class ProductsPhotoController extends Controller
     }
 
     /**
-     * Mettre à jour une photo de produit spécifique.
+     * Update the specified products photo.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\ProductsPhoto  $productsPhoto
@@ -71,13 +71,13 @@ class ProductsPhotoController extends Controller
         ]);
 
         if ($request->hasFile('photo_name_product')) {
-            // Chemin relatif de l'ancienne photo
+            // Relative path of the old photo
             $oldPhotoPath = 'products_photos/' . $productsPhoto->photo_name_product;
-            // Supprimer l'ancienne photo du stockage
+            // Delete the old photo from storage
             if (Storage::disk('public')->exists($oldPhotoPath)) {
                 Storage::disk('public')->delete($oldPhotoPath);
             }
-            // Enregistrer la nouvelle photo
+            // Store the new photo
             $file = $request->file('photo_name_product');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('products_photos', $fileName, 'public');
@@ -90,22 +90,22 @@ class ProductsPhotoController extends Controller
     }
 
     /**
-     * Supprimer une photo de produit spécifique.
+     * Remove the specified products photo from storage.
      *
      * @param  \App\Models\ProductsPhoto  $productsPhoto
      * @return \Illuminate\Http\Response
      */
     public function destroy(ProductsPhoto $productsPhoto)
     {
-        // Construire correctement le chemin de l'image
+        // Build the correct path to the image
         $filePath = 'products_photos/' . $productsPhoto->photo_name_product;
 
-        // Supprimer la photo du stockage
+        // Delete the photo from storage
         if (Storage::disk('public')->exists($filePath)) {
             Storage::disk('public')->delete($filePath);
         }
 
-        // Supprimer l'enregistrement de la base de données
+        // Delete the record from the database
         $productsPhoto->delete();
 
         return response()->json(['message' => 'Photo deleted successfully']);

@@ -9,10 +9,10 @@ class Availability extends Model
 {
     use HasFactory;
 
-    // Nom de la table associée au modèle
+    // Name of the table associated with the model
     protected $table = 'availability';
 
-    // Les attributs qui sont assignables en masse
+    // The attributes that are mass assignable
     protected $fillable = [
         'day',
         'start_time',
@@ -20,7 +20,7 @@ class Availability extends Model
         'professional_id',
     ];
 
-    // Déclaration des relations
+    // Declaration of relationships
     public function professional()
     {
         return $this->belongsTo(Professional::class, 'professional_id');

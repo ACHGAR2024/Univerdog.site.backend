@@ -11,7 +11,7 @@ use Illuminate\Validation\ValidationException;
 class ReviewController extends Controller
 {
     /**
-     * Afficher une liste des avis.
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -22,7 +22,7 @@ class ReviewController extends Controller
     }
 
     /**
-     * Stocker un nouvel avis.
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -41,7 +41,7 @@ class ReviewController extends Controller
     }
 
     /**
-     * Afficher un avis spécifique.
+     * Display the specified resource.
      *
      * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
@@ -52,7 +52,7 @@ class ReviewController extends Controller
     }
 
     /**
-     * Mettre à jour un avis spécifique.
+     * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Review  $review
@@ -72,7 +72,7 @@ class ReviewController extends Controller
     }
 
     /**
-     * Supprimer un avis spécifique
+     * Remove the specified resource from storage.
      *
      * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response

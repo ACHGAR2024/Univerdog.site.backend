@@ -13,7 +13,7 @@ class CreateProductsCategoryTable extends Migration
     {
         Schema::create('products_category', function (Blueprint $table) {
             $table->id();
-            $table->string('name_product_cat');  // Nom de la catégorie de produit
+            $table->string('name_product_cat');  
             $table->timestamps();
         });
         

@@ -28,7 +28,7 @@ class CombinedSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'first_name' => $faker->firstName,
                 'address' => $faker->address,
-                'postal_code' => substr($faker->postcode, 0, 5), // Tronquer à 5 caractères
+                'postal_code' => substr($faker->postcode, 0, 5), 
                 'phone' => $faker->phoneNumber,
                 'role' => $faker->randomElement(['professionnel', 'user']),
                 'remember_token' => Str::random(10),
@@ -151,7 +151,7 @@ class CombinedSeeder extends Seeder
             $categoryId = $faker->randomElement($categoryIds);
             $combination = $placeId . '-' . $categoryId;
 
-            // Assurez-vous que la combinaison est unique
+           
             
             if (!in_array($combination, $usedCombinations)) {
                 $adCategories[] = [

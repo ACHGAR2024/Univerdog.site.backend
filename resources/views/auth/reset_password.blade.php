@@ -20,7 +20,7 @@
         </div>
 
         <!-- Formulaire de réinitialisation -->
-        <div class="card shadow-sm w-50 mx-auto">
+        <div class="card shadow-sm mx-auto" style="width: 100%; max-width: 500px; margin-button: 100px;">
             <div class="card-body">
                 <h4 class="card-title text-center mb-4">Réinitialisation du mot de passe</h4>
 
@@ -67,7 +67,12 @@
                         passe</button>
                 </form>
             </div>
+
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
     </div>
 
     <!-- Bootstrap JS and dependencies -->

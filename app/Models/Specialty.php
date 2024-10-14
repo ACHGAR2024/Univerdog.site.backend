@@ -9,19 +9,19 @@ class Specialty extends Model
 {
     use HasFactory;
 
-    // Nom de la table associée au modèle
-    protected $table = 'specialty';  // Assurez-vous que c'est bien 'specialty'
+    // Table name associated with the model
+    protected $table = 'specialty';  // Make sure it's 'specialty'
 
-    // Les attributs qui sont assignables en masse 
+    // Mass-assignable attributes
     protected $fillable = [
         'name_speciality',
         'professional_id',
     ];
 
-    // Déclaration des relations
+    // Define relationships
 
     /**
-     * Définir la relation avec le modèle Professional.
+     * Define the relationship with the Professional model.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

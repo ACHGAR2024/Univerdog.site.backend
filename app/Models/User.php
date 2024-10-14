@@ -11,6 +11,7 @@ use Laravel\Passport\HasApiTokens;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Auth\Passwords\CanResetPassword as CanResetPasswordTrait;
 
+// user model extends Authenticatable and implements JWTSubject
 class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -54,8 +55,8 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Message::class);
     }
 
-/**
-     * Obtenir les notifications associées à l'utilisateur.
+    /**
+     * Get the notifications associated with the user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -65,7 +66,7 @@ class User extends Authenticatable implements JWTSubject
     }
 
     /**
-     * Obtenir les chiens associés à l'utilisateur.
+     * Get the dogs associated with the user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -75,7 +76,7 @@ class User extends Authenticatable implements JWTSubject
     }
 
     /**
-     * Obtenir les professionnels associés à l'utilisateur.
+     * Get the professionals associated with the user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

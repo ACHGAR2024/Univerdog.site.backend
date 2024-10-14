@@ -9,10 +9,10 @@ class Appointment extends Model
 {
     use HasFactory;
 
-    // Nom de la table associée au modèle
+    // Table name associated with the model
     protected $table = 'appointments';
 
-    // Les attributs qui sont assignables en masse
+    // Mass assignable attributes
     protected $fillable = [
         'date_appointment',
         'time_appointment',
@@ -22,10 +22,10 @@ class Appointment extends Model
         'professional_id',
     ];
 
-    // Déclaration des relations
+    // Define relationships
 
     /**
-     * Définir la relation avec le modèle Dog.
+     * Define the relationship with the Dog model.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -35,7 +35,7 @@ class Appointment extends Model
     }
 
     /**
-     * Définir la relation avec le modèle Professional..
+     * Define the relationship with the Professional model.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

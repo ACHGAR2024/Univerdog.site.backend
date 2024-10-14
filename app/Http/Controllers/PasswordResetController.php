@@ -14,7 +14,7 @@ class PasswordResetController extends Controller
 {
     public function showResetForm($token)
 {
-    // Vérifiez que le token est valide
+    // Check that the token is valid
     $resetToken = DB::table('password_reset_tokens')->where('token', $token)->first();
 
     if (!$resetToken) {
@@ -27,7 +27,7 @@ class PasswordResetController extends Controller
 
 public function resetPassword(Request $request)
 {
-    // Valider les données du formulaire
+    // Validate the form data
     $validator = Validator::make($request->all(), [
         'email' => 'required|email',
         'password' => 'required|confirmed|min:6',
@@ -38,33 +38,33 @@ public function resetPassword(Request $request)
         return response()->json(['error' => $validator->errors()], 422);
     }
 
-    // Vérifier le token
+    // Check the token
     $passwordReset = DB::table('password_reset_tokens')
                         ->where('email', $request->email)
                         ->where('token', $request->token)
                         ->first();
 
     if (!$passwordReset) {
-        return response()->json(['error' => 'Token invalide ou expiré'], 400);
+        return response()->json(['error' => 'Invalid or expired token'], 400);
     }
 
-    // Récupérer l'utilisateur
+    // Get the user
     $user = User::where('email', $request->email)->first();
     if (!$user) {
-        return response()->json(['error' => 'Utilisateur non trouvé'], 404);
+        return response()->json(['error' => 'User not found'], 404);
     }
 
-    // Mettre à jour le mot de passe
+    // Update the password
     $user->password = bcrypt($request->password);
     $user->save();
 
-    // Supprimer le token de réinitialisation pour éviter les réutilisations
+    // Delete the password reset token to prevent reuse
     DB::table('password_reset_tokens')->where('email', $request->email)->delete();
 
-    //return response()->json(['message' => 'Mot de passe réinitialisé avec succès.'], 200);
-    
-// Rediriger vers la page de connexion avec un message de succès
-return redirect('http://localhost:5174/login')->with('status', 'Mot de passe réinitialisé avec succès.');
+    //return response()->json(['message' => 'Password reset successfully.'], 200);
+      
+// Redirect to the login page with a success message
+return redirect('https://univerdog.site/login')->with('status', 'Mot de passe réinitialisé avec succès.');
 
 }
 

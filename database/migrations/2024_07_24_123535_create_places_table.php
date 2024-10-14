@@ -12,7 +12,7 @@ class CreatePlacesTable extends Migration
     public function up()
     {
         Schema::create('places', function (Blueprint $table) {
-            $table->bigIncrements('id'); // Assurez-vous que c'est bigIncrements
+            $table->bigIncrements('id'); 
             $table->string('title', 255)->nullable();
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2)->nullable();
@@ -22,7 +22,7 @@ class CreatePlacesTable extends Migration
             $table->decimal('latitude', 10, 8)->nullable();
             $table->decimal('longitude', 11, 8)->nullable();
             $table->string('type')->nullable();
-            $table->unsignedBigInteger('user_id'); // Assurez-vous que c'est bigInteger
+            $table->unsignedBigInteger('user_id'); 
             $table->timestamps(); 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

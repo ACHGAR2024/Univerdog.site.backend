@@ -14,8 +14,8 @@ class CreatePhotosTable extends Migration
     public function up()
     {
         Schema::create('photos', function (Blueprint $table) {
-            $table->id(); // Utilise bigIncrements par défaut
-            $table->unsignedBigInteger('place_id'); // Assurez-vous que c'est bigInteger
+            $table->id(); 
+            $table->unsignedBigInteger('place_id'); 
             $table->foreign('place_id')->references('id')->on('places')->onDelete('cascade');
             $table->string('photo_path');
             $table->timestamps();

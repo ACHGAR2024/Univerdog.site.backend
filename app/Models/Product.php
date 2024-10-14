@@ -9,10 +9,10 @@ class Product extends Model
 {
     use HasFactory;
 
-    // Nom de la table associée au modèle
+    // Name of the table associated with the model
     protected $table = 'products';
 
-    // Les attributs qui sont assignables en masse
+    // Fillable attributes
     protected $fillable = [
         'name_product',
         'description_product',
@@ -21,10 +21,10 @@ class Product extends Model
         'products_category_id',
     ];
 
-    // Déclaration des relations
+    // Relationships declaration
 
     /**
-     * Définir la relation avec le modèle ProductsCategory.
+     * Define the relationship with the ProductsCategory model.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -34,7 +34,7 @@ class Product extends Model
     }
 
     /**
-     * Obtenir les photos associées à ce produit.
+     * Get the photos associated with this product.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

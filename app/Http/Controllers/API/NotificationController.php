@@ -11,7 +11,7 @@ use Illuminate\Validation\ValidationException;
 class NotificationController extends Controller
 {
     /**
-     * Afficher une liste de notifications.
+     * Display a listing of notifications.
      *
      * @return \Illuminate\Http\Response
      */
@@ -22,26 +22,26 @@ class NotificationController extends Controller
     }
 
     /**
-     * Stocker une nouvelle notification
+     * Store a newly created notification.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{
-    $validatedData = $request->validate([
-        'message' => 'required|string',
-        'date_notification' => 'required|date',
-        'read' => 'required|boolean',
-        'user_id' => 'required|exists:users,id',
-    ]);
+    {
+        $validatedData = $request->validate([
+            'message' => 'required|string',
+            'date_notification' => 'required|date',
+            'read' => 'required|boolean',
+            'user_id' => 'required|exists:users,id',
+        ]);
 
-    $notification = Notification::create($validatedData);
-    return response()->json($notification, Response::HTTP_CREATED);
-}
+        $notification = Notification::create($validatedData);
+        return response()->json($notification, Response::HTTP_CREATED);
+    }
 
     /**
-     * Afficher une notification spécifique.
+     * Display the specified notification.
      *
      * @param  \App\Models\Notification  $notification
      * @return \Illuminate\Http\Response
@@ -52,7 +52,7 @@ class NotificationController extends Controller
     }
 
     /**
-     * Mettre à jour une notification spécifique.
+     * Update the specified notification.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Notification  $notification
@@ -72,7 +72,7 @@ class NotificationController extends Controller
     }
 
     /**
-     * Supprimer une notification spécifique.
+     * Remove the specified notification.
      *
      * @param  \App\Models\Notification  $notification
      * @return \Illuminate\Http\Response

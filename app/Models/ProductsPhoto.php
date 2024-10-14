@@ -9,19 +9,19 @@ class ProductsPhoto extends Model
 {
     use HasFactory;
 
-    // Nom de la table associée au modèle
+    // Table name associated with the model
     protected $table = 'products_photos';
 
-    // Les attributs qui sont assignables en masse
+    // Fillable attributes
     protected $fillable = [
         'photo_name_product',
         'product_id',
     ];
 
-    // Déclaration des relations
+    // Declare relationships
 
     /**
-     * Définir la relation avec le modèle Product.
+     * Define the relationship with the Product model.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

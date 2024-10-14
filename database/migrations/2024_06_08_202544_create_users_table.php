@@ -26,16 +26,18 @@ class CreateUsersTable extends Migration
             $table->string('postal_code', 8)->nullable();
             $table->string('phone', 20)->nullable();
             
-            
+            // Added role text (1-Admin, 2-User, 3-Professionnel)
             $table->string('role', 255)->default('user');
+            
             $table->rememberToken();
             $table->timestamps();
+            // Added role_id 1-Admin, 2-User, 3-Professionnel
             $table->tinyInteger('role_id')->unsigned()->default(2)->comment('1: Administrateur, 2: Utilisateur, 3: Professionnel');
         });
         
         
 
-        // Insérer un compte administrateur unique
+        // Insert a unique administrator account
         DB::table('users')->insert([
             'name' => 'Admin',
             'email' => 'admin@gmail.com',

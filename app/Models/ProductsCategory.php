@@ -9,18 +9,18 @@ class ProductsCategory extends Model
 {
     use HasFactory;
 
-    // Nom de la table associée au modèle
+    // Table name associated with the model
     protected $table = 'products_category';
 
-    // Les attributs qui sont assignables en masse
+    // Mass assignable attributes
     protected $fillable = [
         'name_product_cat',
     ];
 
-    // Déclaration des relations
+    // Relationships declaration
 
     /**
-     * Obtenir les produits associés à cette catégorie de produits.
+     * Get the products associated with this product category.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

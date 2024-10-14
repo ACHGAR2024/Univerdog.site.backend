@@ -9,7 +9,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Retourner les informations de l'utilisateur authentifié
+        // Return the information of the authenticated user
         return response()->json([
             'user' => Auth::user(),
         ]);

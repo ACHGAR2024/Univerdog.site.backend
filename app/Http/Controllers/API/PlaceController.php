@@ -12,17 +12,17 @@ use Illuminate\Support\Facades\Auth;
 
 class PlaceController extends Controller
 {
-    // Méthode pour récupérer toutes les annonces
+    // Method to get all ads
     public function index()
     {
         $places = Place::orderBy('created_at', 'desc')->get();
         return response()->json(['places' => $places]);
     }
 
-    // Méthode pour créer une nouvelle annonce
+    // Method to create a new ad
     public function store(Request $request)
 {
-    // Validation des données
+    // Validation of data
     $request->validate([
         'title' => 'required|string|max:255',
         'description' => 'required|string',
@@ -34,11 +34,12 @@ class PlaceController extends Controller
         'latitude' => 'nullable|numeric',
         'longitude' => 'nullable|numeric',
         'type' => 'nullable|string|max:255',
+        'category_ids' => 'nullable|array',
     ]);
 
     $input = $request->except('photo', 'category_ids');
 
-    // Gestion de l'upload de l'image
+    // Image upload management
     if ($request->hasFile('photo')) {
         $image = $request->file('photo');
         $name = time() . '_' . $image->getClientOriginalName();
@@ -49,18 +50,12 @@ class PlaceController extends Controller
     DB::beginTransaction();
 
     try {
-        // Création de l'annonce
+        // Ad creation
         $place = Place::create($input);
 
-        // Enregistrement de l'association avec la catégorie
+        // Registration of associated categories
         if ($request->has('category_ids')) {
-            $categoryIds = json_decode($request->category_ids, true);
-            foreach ($categoryIds as $categoryId) {
-                DB::table('ad_categories')->insert([
-                    'place_id' => $place->id,
-                    'category_id' => $categoryId,
-                ]);
-            }
+            $place->categories()->attach($request->input('category_ids'));
         }
 
         DB::commit();
@@ -72,14 +67,14 @@ class PlaceController extends Controller
 }
 
 
-    // Méthode pour afficher une annonce spécifique
+    // Method to display a specific ad
     public function show($id)
     {
         $place = Place::findOrFail($id);
         return response()->json(['place' => $place]);
     }
 
-    // Méthode pour mettre à jour une annonce
+    // Method to update an ad
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -94,7 +89,7 @@ class PlaceController extends Controller
             'longitude' => 'nullable|numeric',
             'type' => 'nullable|string|max:255',
             'category_ids' => 'nullable|array',
-            'category_ids.*' => 'exists:categories,id'
+            
         ]);
     
         $place = Place::findOrFail($id);
@@ -110,15 +105,15 @@ class PlaceController extends Controller
         DB::beginTransaction();
     
         try {
-            // Mise à jour de l'annonce
+            // Ad update
             $place->update($input);
     
-            // Enregistrement de l'association avec la catégorie
+            // Registration of associated categories
             if ($request->has('category_ids')) {
-                // Suppression des anciennes associations
+                // Delete old associations
                 DB::table('ad_categories')->where('place_id', $id)->delete();
                 
-                $categoryIds = $request->category_ids; // Pas besoin de json_decode si déjà un tableau
+                $categoryIds = $request->category_ids; // No need to json_decode if already an array
                 foreach ($categoryIds as $categoryId) {
                     DB::table('ad_categories')->insert([
                         'place_id' => $place->id,
@@ -138,21 +133,21 @@ class PlaceController extends Controller
     
 
 
-    // Méthode pour supprimer une annonce
+    // Method to delete an ad
     public function destroy($id)
     {
         $place = Place::findOrFail($id);
 
-        // Suppression des associations
+        // Delete associations
         DB::table('ad_categories')->where('place_id', $id)->delete();
 
-        // Suppression de l'annonce
+        // Delete ad
         $place->delete();
 
         return response()->json(['message' => 'Place deleted successfully']);
     }
 
-    // Méthode pour récupérer les annonces par catégorie
+    // Method to get ads by category
     public function getPlacesByCategory($categoryId)
     {
         $places = DB::table('places')

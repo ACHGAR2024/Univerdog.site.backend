@@ -18,8 +18,8 @@ class AppointmentSeeder extends Seeder
                 'time_appointment' => '10:00:00',
                 'reason' => 'Maladie et traumatisme',
                 'status' => 'Confirmé',
-                'dog_id' => 1,  // Assurez-vous que le chien avec cet ID existe
-                'professional_id' => 1,  // Assurez-vous que le professionnel avec cet ID existe
+                'dog_id' => 1,  
+                'professional_id' => 1,  
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -28,8 +28,8 @@ class AppointmentSeeder extends Seeder
                 'time_appointment' => '14:30:00',
                 'reason' => 'Maladie chronique',
                 'status' => 'En attente',
-                'dog_id' => 1,  // Assurez-vous que le chien avec cet ID existe
-                'professional_id' => 1,  // Assurez-vous que le professionnel avec cet ID existe
+                'dog_id' => 1,  
+                'professional_id' => 1,  
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -38,8 +38,8 @@ class AppointmentSeeder extends Seeder
                 'time_appointment' => '09:15:00',
                 'reason' => 'Maladie sangrée',
                 'status' => 'Annulé',
-                'dog_id' => 1,  // Assurez-vous que le chien avec cet ID existe
-                'professional_id' => 1,  // Assurez-vous que le professionnel avec cet ID existe
+                'dog_id' => 1,  
+                'professional_id' => 1,  
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

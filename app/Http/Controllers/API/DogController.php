@@ -10,7 +10,7 @@ use Illuminate\Http\Response;
 class DogController extends Controller
 {
     /**
-     * Afficher une liste des chiens..
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -25,7 +25,7 @@ public function dogShowUser($id)
     return response()->json($dogs);
 }
     /**
-     * Stocker un nouveau chien.
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -48,7 +48,7 @@ public function dogShowUser($id)
     }
 
     /**
-     * Afficher un chien spécifique.
+     * Display the specified resource.
      *
      * @param  \App\Models\Dog  $dog
      * @return \Illuminate\Http\Response
@@ -59,7 +59,7 @@ public function dogShowUser($id)
     }
 
     /**
-     * Mettre à jour un chien spécifique.
+     * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Dog  $dog
@@ -83,7 +83,7 @@ public function dogShowUser($id)
     }
 
     /**
-     * Supprimer un chien spécifique.
+     * Remove the specified resource from storage.
      *
      * @param  \App\Models\Dog  $dog
      * @return \Illuminate\Http\Response

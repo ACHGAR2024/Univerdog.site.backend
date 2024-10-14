@@ -13,8 +13,8 @@ class CreateProductsPhotosTable extends Migration
     {
         Schema::create('products_photos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');  // Clé étrangère vers la table products
-            $table->string('photo_name_product');  // Nom du fichier photo
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');  
+            $table->string('photo_name_product'); 
             $table->timestamps();
         });
         

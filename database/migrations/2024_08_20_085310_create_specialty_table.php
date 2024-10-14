@@ -13,8 +13,8 @@ class CreateSpecialtyTable extends Migration
     {
         Schema::create('specialty', function (Blueprint $table) {
             $table->id();
-            $table->string('name_speciality');  // Nom de la spécialité
-            $table->foreignId('professional_id')->constrained('professionals')->onDelete('cascade');  // Clé étrangère vers la table professionals
+            $table->string('name_speciality');  
+            $table->foreignId('professional_id')->constrained('professionals')->onDelete('cascade');  
             $table->timestamps();
         });
         

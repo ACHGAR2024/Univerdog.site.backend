@@ -10,18 +10,18 @@ use Illuminate\Support\Facades\Storage;
 class DogsPhotoController extends Controller
 {
     /**
-     * Afficher une liste des photos de chiens.
+     * Display a listing of dogs photos.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $dogsPhotos = DogsPhoto::with('dog')->get(); // Inclut les relations si nécessaire
+        $dogsPhotos = DogsPhoto::with('dog')->get(); // Include relationships if necessary
         return response()->json($dogsPhotos);
     }
 
     /**
-     * Stocker une nouvelle photo de chien.
+     * Store a newly created dogs photo.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -46,7 +46,7 @@ class DogsPhotoController extends Controller
     }
 
     /**
-     * Afficher une photo de chien spécifique.
+     * Display the specified dogs photo.
      *
      * @param  \App\Models\DogsPhoto  $dogsPhoto
      * @return \Illuminate\Http\Response
@@ -57,7 +57,7 @@ class DogsPhotoController extends Controller
     }
 
     /**
-     * Mettre à jour une photo de chien spécifique.
+     * Update the specified dogs photo.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\DogsPhoto  $dogsPhoto
@@ -70,15 +70,15 @@ class DogsPhotoController extends Controller
         ]);
 
         if ($request->hasFile('photo_name_dog')) {
-            // Chemin relatif de l'ancienne photo
+            // Relative path of the old photo
             $oldPhotoPath = 'dogs_photos/' . $dogsPhoto->photo_name_dog;
 
-            // Supprimer l'ancienne photo du stockage
+            // Delete the old photo from storage
             if (Storage::disk('public')->exists($oldPhotoPath)) {
                 Storage::disk('public')->delete($oldPhotoPath);
             }
 
-            // Enregistrer la nouvelle photo
+            // Store the new photo
             $file = $request->file('photo_name_dog');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('dogs_photos', $fileName, 'public');
@@ -91,17 +91,17 @@ class DogsPhotoController extends Controller
     }
 
     /**
-     * Supprimer une photo de chien spécifique.
+     * Remove the specified dogs photo from storage.
      *
      * @param  \App\Models\DogsPhoto  $dogsPhoto
      * @return \Illuminate\Http\Response
      */
     public function destroy(DogsPhoto $dogsPhoto)
     {
-        // Chemin relatif de la photo à supprimer
+        // Relative path of the photo to delete
         $filePath = 'dogs_photos/' . $dogsPhoto->photo_name_dog;
 
-        // Supprimer la photo du stockage
+        // Delete the photo from storage
         if (Storage::disk('public')->exists($filePath)) {
             Storage::disk('public')->delete($filePath);
         }

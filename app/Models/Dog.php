@@ -9,10 +9,10 @@ class Dog extends Model
 {
     use HasFactory;
 
-    // Nom de la table associée au modèle 
+    // Name of the table associated with the model
     protected $table = 'dogs';
 
-    // Les attributs qui sont assignables en masse
+    // The attributes that are mass assignable
     protected $fillable = [
         'name_dog',
         'breed',
@@ -24,10 +24,10 @@ class Dog extends Model
         'user_id',
     ];
 
-    // Déclaration des relations
+    // Declaration of relations
 
     /**
-     * Obtenir les rendez-vous associés au chien.
+     * Get the appointments associated with the dog.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -37,7 +37,7 @@ class Dog extends Model
     }
 
     /**
-     * Obtenir les photos associées au chien.
+     * Get the photos associated with the dog.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -47,7 +47,7 @@ class Dog extends Model
     }
 
     /**
-     * Définir la relation avec le modèle User.
+     * Define the relationship with the User model.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

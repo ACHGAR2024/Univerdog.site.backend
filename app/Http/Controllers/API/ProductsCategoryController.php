@@ -10,7 +10,7 @@ use Illuminate\Http\Response;
 class ProductsCategoryController extends Controller
 {
     /**
-     * Afficher une liste des catégories de produits.
+     * Display a listing of the product categories.
      *
      * @return \Illuminate\Http\Response
      */
@@ -21,7 +21,7 @@ class ProductsCategoryController extends Controller
     }
 
     /**
-     * Stocker une nouvelle catégorie de produit.
+     * Store a newly created product category in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -37,7 +37,7 @@ class ProductsCategoryController extends Controller
     }
 
     /**
-     * Afficher une catégorie de produit spécifique.
+     * Display the specified product category.
      *
      * @param  \App\Models\ProductsCategory  $category
      * @return \Illuminate\Http\Response
@@ -48,7 +48,7 @@ class ProductsCategoryController extends Controller
     }
 
     /**
-     * Mettre à jour une catégorie de produit spécifique.
+     * Update the specified product category in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\ProductsCategory  $category
@@ -65,7 +65,7 @@ class ProductsCategoryController extends Controller
     }
 
     /**
-     * Supprimer une catégorie de produit spécifique.
+     * Remove the specified product category from storage.
      *
      * @param  \App\Models\ProductsCategory  $category
      * @return \Illuminate\Http\Response

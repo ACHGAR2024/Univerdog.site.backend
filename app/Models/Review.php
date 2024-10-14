@@ -9,10 +9,10 @@ class Review extends Model
 {
     use HasFactory;
 
-    // Nom de la table associée au modèle
+    // Name of the table associated with the model
     protected $table = 'reviews';
 
-    // Les attributs qui sont assignables en masse 
+    // Attributes that are mass assignable
     protected $fillable = [
         'rating',
         'comment',
@@ -20,10 +20,10 @@ class Review extends Model
         'professional_id',
     ];
 
-    // Déclaration des relations
+    // Definition of the relations
 
     /**
-     * Définir la relation inverse avec le modèle Professional.
+     * Define the inverse relationship with the Professional model.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

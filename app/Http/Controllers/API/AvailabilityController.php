@@ -10,7 +10,7 @@ use Illuminate\Http\Response;
 class AvailabilityController extends Controller
 {
     /**
-     * Afficher une liste des disponibilités. 
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -20,27 +20,37 @@ class AvailabilityController extends Controller
         return response()->json($availabilities);
     }
 
-
-/**
-     * Afficher une liste des disponibilités pour un professionnel spécifique.
+ /**
+     * Display the availability for a specific professional.
      *
-     * @param  int  $professional_id
+     * @param  int  $professionalId
      * @return \Illuminate\Http\Response
      */
-    public function showByProfessional($professional_id)
+    public function showByProfessional($professionalId)
     {
-        // Valider le professional_id
-        $availabilities = Availability::where('professional_id', $professional_id)->get();
+        $availabilities = Availability::where('professional_id', $professionalId)->get();
 
         if ($availabilities->isEmpty()) {
-            return response()->json(['message' => 'No availabilities found for this professional.'], Response::HTTP_NOT_FOUND);
+            return response()->json(['message' => 'Aucune disponibilité trouvée pour ce professionnel.'], 404);
         }
 
         return response()->json($availabilities);
     }
-    
+
+
+/**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Availability $availability)
+    {
+        return response()->json($availability);
+    }
+
     /**
-     * Stocker une nouvelle disponibilité.
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -59,18 +69,7 @@ class AvailabilityController extends Controller
     }
 
     /**
-     * Afficher une disponibilité spécifique.
-     *
-     * @param  \App\Models\Availability  $availability
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Availability $availability)
-    {
-        return response()->json($availability);
-    }
-
-    /**
-     * Mettre à jour une disponibilité spécifique.
+     * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Availability  $availability
@@ -90,7 +89,7 @@ class AvailabilityController extends Controller
     }
 
     /**
-     * Supprimer une disponibilité spécifique.
+     * Remove the specified resource from storage.
      *
      * @param  \App\Models\Availability  $availability
      * @return \Illuminate\Http\Response

@@ -11,7 +11,7 @@ use Illuminate\Validation\ValidationException;
 class ProfessionalController extends Controller
 {
     /**
-     * Afficher une liste des professionnels.
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -30,7 +30,7 @@ class ProfessionalController extends Controller
     return response()->json($professionals);
 }
     /**
-     * Stocker un nouveau professionnel.
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -50,7 +50,7 @@ class ProfessionalController extends Controller
     }
 
     /**
-     * Afficher un professionnel spécifique.
+     * Display the specified resource.
      *
      * @param  \App\Models\Professional  $professional
      * @return \Illuminate\Http\Response
@@ -61,7 +61,7 @@ class ProfessionalController extends Controller
     }
 
     /**
-     * Mettre à jour un professionnel spécifique.
+     * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Professional  $professional
@@ -82,7 +82,7 @@ class ProfessionalController extends Controller
     }
 
     /**
-     * Supprimer un professionnel spécifique..
+     * Remove the specified resource from storage.
      *
      * @param  \App\Models\Professional  $professional
      * @return \Illuminate\Http\Response

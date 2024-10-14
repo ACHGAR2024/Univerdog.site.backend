@@ -9,17 +9,17 @@ use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
-    // Méthode pour récupérer tous les événements
+    // Method to get all events
     public function index()
     {
         $events = Event::orderBy('created_at', 'desc')->get();
         return response()->json(['events' => $events]);
     }
 
-    // Méthode pour créer un nouvel événement
+    // Method to create a new event
     public function store(Request $request)
     {
-        // Validation des données de la requête
+        // Validate the request data
         $validatedData = $request->validate([
             'type_event' => 'nullable|string|max:255',
             'title_event' => 'required|string|max:255',
@@ -34,7 +34,7 @@ class EventController extends Controller
             'user_id' => 'required|exists:users,id',
         ]);
 
-        // Gestion de l'upload de l'image
+        // Handle the image upload
         if ($request->hasFile('photo_event')) {
             $image = $request->file('photo_event');
             $name = time() . '_' . $image->getClientOriginalName();
@@ -42,27 +42,27 @@ class EventController extends Controller
             $validatedData['photo_event'] = '/storage/' . $filePath;
         }
 
-        // Création de l'événement
+        // Create the event
         $event = Event::create($validatedData);
 
         return response()->json(['event' => $event, 'message' => 'Event created successfully']);
     }
 
-    // Méthode pour afficher un événement spécifique
+    // Method to show a specific event
     public function show($id)
     {
         $event = Event::findOrFail($id);
         return response()->json(['event' => $event]);
     }
 
-    // Méthode pour mettre à jour un événement
+    // Method to update an event
     public function update(Request $request, $id)
     {
-        // Récupération de l'événement existant ou renvoie une erreur 404 si non trouvé
+        // Retrieve the event if it exists or return a 404 error if not found
         $event = Event::findOrFail($id);
         $file_temp = $event->photo_event;
 
-        // Validation des données de la requête
+        // Validate the request data
         $request->validate([
             'type_event' => 'nullable|string|max:255',
             'title_event' => 'required|string|max:255',
@@ -77,35 +77,35 @@ class EventController extends Controller
             'user_id' => 'required|exists:users,id',
         ]);
 
-        // Extraction des données de la requête
+        // Extract the data from the request
         $input = $request->except('photo_event');
 
-        // Si une nouvelle image est téléchargée, la traiter et la sauvegarder
+        // If a new image is uploaded, handle it and save it
         if ($request->hasFile('photo_event')) {
-            // Générer un nom unique pour l'image
+            // Generate a unique name for the image
             $filenameWithExt = $request->file('photo_event')->getClientOriginalName();
             $filenameWithoutExt = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('photo_event')->getClientOriginalExtension();
             $filename = $filenameWithoutExt . '_' . time() . '.' . $extension;
             $path = $request->file('photo_event')->storeAs('images', $filename, 'public');
 
-            // Supprimer l'ancienne image si elle existe
+            // Delete the old image if it exists
             if ($file_temp) {
                 Storage::disk('public')->delete('images/' . basename($file_temp));
             }
 
-            // Mettre à jour le chemin de la nouvelle image dans les données à sauvegarder
+            // Update the path of the new image in the data to be saved
             $input['photo_event'] = '/storage/' . $path;
         }
 
-        // Mettre à jour l'événement avec les nouvelles données
+        // Update the event with the new data
         $event->update($input);
 
-        // Retourner une réponse JSON avec l'événement mis à jour et un message de succès
+        // Return a JSON response with the updated event and a success message
         return response()->json(['event' => $event, 'message' => 'Event updated successfully'], 200);
     }
 
-    // Méthode pour supprimer un événement
+    // Method to delete an event
     public function destroy($id)
     {
         $event = Event::findOrFail($id);

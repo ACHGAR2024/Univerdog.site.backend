@@ -18,28 +18,28 @@ class MessageController extends Controller
         return response()->json($messages);
     }
 
-     // Méthode existante pour stocker un messagepublic function store(Request $request)
+     // Existing method to store a message
      public function store(Request $request)
      {
          $request->validate([
              'place_id' => 'required|integer',
              'content' => 'required|string',
-             'status' => 'nullable|string|max:50', // Assurez-vous que le statut est valide
+             'status' => 'nullable|string|max:50', // Make sure the status is valid
          ]);
      
          try {
             $message = Message::create([
-                'user_id' => auth()->id(), // Utilise l'utilisateur authentifié
+                'user_id' => auth()->id(), // Use the authenticated user
                 'place_id' => $request->place_id,
                 'content' => $request->content,
-                'status' => isset($request->status) ? $request->status : 'En attente', // Valeur par défaut
+                'status' => isset($request->status) ? $request->status : 'En attente', // Default value
             ]);
             
      
              return response()->json($message, 201);
          } catch (\Exception $e) {
-             \Log::error('Erreur lors de l\'ajout du message: ' . $e->getMessage());
-             return response()->json(['message' => 'Erreur serveur'], 500);
+             \Log::error('Error when adding message: ' . $e->getMessage());
+             return response()->json(['message' => 'Server error'], 500);
          }
      }
      
@@ -52,7 +52,7 @@ class MessageController extends Controller
     ]);
 
     try {
-        $userId = Auth::id(); // Utiliser Auth pour obtenir l'ID utilisateur
+        $userId = Auth::id(); // Use Auth to get the user ID
 
         $message = Message::where('place_id', $request->place_id)
                           ->where('user_id', $userId)
@@ -73,7 +73,7 @@ class MessageController extends Controller
             $message->save();
         }
 
-        return response()->json(['message' => 'Message added to favorites'], 200);
+        return response()->json(['message' => 'Message ajouté aux favoris'], 200);
     } catch (\Exception $e) {
         \Log::error('Erreur lors de l\'ajout aux favoris: ' . $e->getMessage());
         return response()->json(['message' => 'Erreur serveur'], 500);
@@ -81,7 +81,7 @@ class MessageController extends Controller
 }
 
      
-     // Nouvelle méthode pour signaler
+     // New method to report
      public function report(Request $request)
     {
         $request->validate([
@@ -91,7 +91,7 @@ class MessageController extends Controller
         ]);
 
         try {
-            $userId = Auth::id(); // Utiliser Auth pour obtenir l'ID utilisateur
+            $userId = Auth::id(); // Use Auth to get the user ID
 
             $message = Message::where('place_id', $request->place_id)
                               ->where('user_id', $userId)
@@ -141,7 +141,7 @@ class MessageController extends Controller
 
         $message = Message::findOrFail($id);
         $message->update($request->all());
-        return response()->json("Message updated successfully", 200);
+        return response()->json("Message mis à jour avec succès", 200);
     }
 
     // Remove the specified message from storage.
@@ -149,6 +149,6 @@ class MessageController extends Controller
     {
         $message = Message::findOrFail($id);
         $message->delete();
-        return response()->json('Message deleted successfully', 200);
+        return response()->json('Message supprimé avec succès', 200);
     }
 }
