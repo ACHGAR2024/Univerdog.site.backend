@@ -1,11 +1,6 @@
-<p align="center"><a href="https://univerdog.site" target="_blank"><img src="https://api.univerdog.site/logo.png" width="400" alt="UniversDog Logo"></a></p>
+<p align="center"><a href="https://univerdog.site" target="_blank"><img src="https://univerdog.site/src/images/logo.png" width="100" alt="UniversDog Logo"></a></p>
 
-<p align="center">
-<a href="https://api.univerdog.site/status"><img src="https://api.univerdog.site/status-badge.svg" alt="Statut de l'API"></a>
-<a href="https://univerdog.site/stats"><img src="https://api.univerdog.site/users-badge.svg" alt="Nombre d'utilisateurs"></a>
-<a href="https://univerdog.site/version"><img src="https://api.univerdog.site/version-badge.svg" alt="Version actuelle"></a>
-<a href="https://univerdog.site/license"><img src="https://api.univerdog.site/license-badge.svg" alt="Licence"></a>
-</p>
+
 
 # 🐾 UniversDog API
 
@@ -15,10 +10,10 @@ UniversDog est une API RESTful robuste construite avec Laravel, conçue pour ré
 
 ### 🌟 Fonctionnalités principales
 
--   🔐 [Authentification sécurisée](https://univerdog.site/features/auth)
--   📅 [Gestion avancée des rendez-vous](https://univerdog.site/features/appointments)
--   📸 [Partage et gestion de QR codes](https://univerdog.site/features/photos)
--   🤝 [Commentaires de propriétaires de chiens](https://univerdog.site/community)
+-   🔐 [Authentification sécurisée](https://univerdog.site/login)
+-   📅 [Gestion avancée des rendez-vous](https://univerdog.site/login)
+-   📸 [Partage et gestion de QR codes](https://univerdog.site/login)
+-   🤝 [Commentaires de propriétaires de chiens](https://univerdog.site/login)
 
 ## 🛠 Spécifications techniques
 
@@ -42,30 +37,6 @@ UniversDog est une API RESTful robuste construite avec Laravel, conçue pour ré
 -   Stockage sécurisé des mots de passe avec Bcrypt
 -   Protection CSRF pour les routes web
 
-## 🏗 Structure du projet
-
-univerdog-api/
-├── app/
-│ ├── Http/
-│ │ ├── Controllers/
-│ │ │ └── API/
-│ │ │ ├── AuthController.php
-│ │ │ ├── AppointmentController.php
-│ │ │ └── PhotoController.php
-│ │ ├── Requests/
-│ │ └── Resources/
-│ ├── Models/
-│ └── Services/
-├── config/
-├── database/
-│ └── migrations/
-├── routes/
-│ └── api.php
-├── tests/
-└── storage/
-└── app/
-└── public/
-└── photos/
 
 ## 💻 Composants principaux
 
@@ -112,7 +83,7 @@ Le `PhotoController` est responsable de la gestion des photos de chiens. Il gèr
 
 1. Clonez le dépôt :
     ```bash
-    git clone https://github.com/univerdog/api.git
+    git clone https://github.com/ACHGAR2024/Univerdog.site.backend.git
     cd univerdog-api
     ```
 2. Installez les dépendances :
@@ -136,7 +107,7 @@ Le `PhotoController` est responsable de la gestion des photos de chiens. Il gèr
 
 ## 📚 Documentation API
 
-Consultez notre [documentation API complète](https://api.univerdog.site/docs) pour des informations détaillées sur tous les points d'entrée disponibles.
+Consultez notre [documentation API complète](https://api.univerdog.site) pour des informations détaillées sur tous les points d'entrée disponibles.
 
 ## 🤝 Contribution
 
@@ -144,8 +115,8 @@ Nous accueillons chaleureusement les contributions ! Consultez notre [guide de c
 
 ## 📄 Licence
 
-UniversDog est un logiciel open-source sous licence [MIT](https://opensource.org/licenses/MIT).
+UniversDog est un code open-source.
 
 ---
 
-<p align="center">Fait avec ❤️ par l'équipe UniversDog</p>
+<p align="center">Fait avec ❤️ par le projet UniversDog</p>
