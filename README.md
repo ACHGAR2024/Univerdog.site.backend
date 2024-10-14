@@ -1,66 +1,151 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://univerdog.site" target="_blank"><img src="https://api.univerdog.site/logo.png" width="400" alt="UniversDog Logo"></a></p>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<a href="https://api.univerdog.site/status"><img src="https://api.univerdog.site/status-badge.svg" alt="Statut de l'API"></a>
+<a href="https://univerdog.site/stats"><img src="https://api.univerdog.site/users-badge.svg" alt="Nombre d'utilisateurs"></a>
+<a href="https://univerdog.site/version"><img src="https://api.univerdog.site/version-badge.svg" alt="Version actuelle"></a>
+<a href="https://univerdog.site/license"><img src="https://api.univerdog.site/license-badge.svg" alt="Licence"></a>
 </p>
 
-## About Laravel
+# 🐾 UniversDog API
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📘 À propos du projet
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+UniversDog est une API RESTful robuste construite avec Laravel, conçue pour révolutionner la gestion des services canins. Notre plateforme offre une solution complète pour l'authentification des utilisateurs, la gestion des rendez-vous et le partage des fiches de chiens et QR codes.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🌟 Fonctionnalités principales
 
-## Learning Laravel
+-   🔐 [Authentification sécurisée](https://univerdog.site/features/auth)
+-   📅 [Gestion avancée des rendez-vous](https://univerdog.site/features/appointments)
+-   📸 [Partage et gestion de QR codes](https://univerdog.site/features/photos)
+-   🤝 [Commentaires de propriétaires de chiens](https://univerdog.site/community)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🛠 Spécifications techniques
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+| Technologie          | Description        |
+| -------------------- | ------------------ |
+| **Framework**        | Laravel 10.x       |
+| **PHP Version**      | 8.1+               |
+| **Architecture**     | API RESTful        |
+| **Base de données**  | MySQL 8.0          |
+| **ORM**              | Eloquent           |
+| **Authentification** | Laravel Sanctum    |
+| **Validation**       | Form Requests      |
+| **Stockage**         | Laravel Filesystem |
+| **Tests**            | PHPUnit            |
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🔒 Sécurité
 
-## Laravel Sponsors
+-   Authentification via tokens Sanctum
+-   Validation stricte des entrées avec Form Requests
+-   Politiques d'autorisation pour chaque action
+-   Stockage sécurisé des mots de passe avec Bcrypt
+-   Protection CSRF pour les routes web
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🏗 Structure du projet
 
-### Premium Partners
+univerdog-api/
+├── app/
+│ ├── Http/
+│ │ ├── Controllers/
+│ │ │ └── API/
+│ │ │ ├── AuthController.php
+│ │ │ ├── AppointmentController.php
+│ │ │ └── PhotoController.php
+│ │ ├── Requests/
+│ │ └── Resources/
+│ ├── Models/
+│ └── Services/
+├── config/
+├── database/
+│ └── migrations/
+├── routes/
+│ └── api.php
+├── tests/
+└── storage/
+└── app/
+└── public/
+└── photos/
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 💻 Composants principaux
 
-## Contributing
+-   **Controllers** : Gèrent les requêtes entrantes et génèrent les réponses.
+-   **Models** : Interagissent avec la base de données.
+-   **Services** : Logiques métier.
+-   **Requests** : Valider les données des requêtes.
+-   **Resources** : Formater les réponses.
+-   **Migrations** : Gérer la structure de la base de données.
+-   **Routes** : Gérer les routes de l'API.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 🔑 AuthController
 
-## Code of Conduct
+Le `AuthController` est responsable de l'authentification des utilisateurs. Il gère les routes pour l'inscription, la connexion, la déconnexion et la récupération du profil utilisateur.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#### 📄 Routes
 
-## Security Vulnerabilities
+-   `POST /api/register` : Inscrire un nouvel utilisateur.
+-   `POST /api/login` : Connecter un utilisateur existant.
+-   `POST /api/logout` : Déconnecter un utilisateur.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 📅 AppointmentController
 
-## License
+Le `AppointmentController` est responsable de la gestion des rendez-vous. Il gère les routes pour la création, la récupération, la mise à jour et la suppression des rendez-vous.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### 📄 Routes
+
+-   `POST /api/appointments` : Créer un nouveau rendez-vous.
+-   `GET /api/appointments/{id}` : Récupérer un rendez-vous par ID.
+-   `PUT /api/appointments/{id}` : Mettre à jour un rendez-vous existant.
+-   `DELETE /api/appointments/{id}` : Supprimer un rendez-vous.
+
+### 📸 PhotoController
+
+Le `PhotoController` est responsable de la gestion des photos de chiens. Il gère les routes pour la création, la récupération, la mise à jour et la suppression des photos.
+
+#### 📄 Routes
+
+-   `POST /api/photos` : Créer une nouvelle photo.
+-   `GET /api/photos/{id}` : Récupérer une photo par ID.
+-   `PUT /api/photos/{id}` : Mettre à jour une photo existante.
+
+## 🚀 Installation
+
+1. Clonez le dépôt :
+    ```bash
+    git clone https://github.com/univerdog/api.git
+    cd univerdog-api
+    ```
+2. Installez les dépendances :
+    ```bash
+    composer install
+    ```
+3. Configurez l'environnement :
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
+4. Configurez la base de données dans `.env`
+5. Exécutez les migrations :
+    ```bash
+    php artisan migrate
+    ```
+6. Lancez le serveur :
+    ```bash
+    php artisan serve
+    ```
+
+## 📚 Documentation API
+
+Consultez notre [documentation API complète](https://api.univerdog.site/docs) pour des informations détaillées sur tous les points d'entrée disponibles.
+
+## 🤝 Contribution
+
+Nous accueillons chaleureusement les contributions ! Consultez notre [guide de contribution](https://univerdog.site/contact) pour commencer.
+
+## 📄 Licence
+
+UniversDog est un logiciel open-source sous licence [MIT](https://opensource.org/licenses/MIT).
+
+---
+
+<p align="center">Fait avec ❤️ par l'équipe UniversDog</p>
