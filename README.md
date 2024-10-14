@@ -15,6 +15,7 @@
   <a href="#-fonctionnalités">Fonctionnalités</a> •
   <a href="#-spécifications-techniques">Spécifications</a> •
   <a href="#-installation">Installation</a> •
+  <a href="#-outils-de-développement">Outils de développement Postman</a> •
   <a href="#-documentation-api">Documentation</a> •
   <a href="#-contribution">Contribution</a> •
   <a href="#-licence">Licence</a>
@@ -24,16 +25,14 @@
 
 ## 📘 À propos du projet
 
-UniversDog est une API RESTful robuste construite avec Laravel, conçue pour révolutionner la gestion des services canins. Notre plateforme offre une solution complète pour l'authentification des utilisateurs, la gestion des rendez-vous et le partage des fiches de chiens et QR codes.
+UniversDog est une API RESTful robuste construite avec Laravel, conçue pour révolutionner la gestion des services canins. Notre plateforme offre une solution complète pour l'authentification des utilisateurs, la gestion des rendez-vous.
 
 ## 🌟 Fonctionnalités
 
 -   🔐 [Authentification sécurisée](https://univerdog.site/login)
 -   📅 [Gestion avancée des rendez-vous](https://univerdog.site/login)
--   📸 [Partage et gestion de QR codes](https://univerdog.site/login)
--   🤝 [Commentaires de propriétaires de chiens](https://univerdog.site/login)
--   🔒 **Authentification JWT** : Utilisation de tokens JWT pour l'authentification sécurisée via le protocole Bearer
--   🔐 **Connexion sécurisée avec Google** : Utilisez Google pour vous connecter de manière sécurisée
+-   🔒 [Authentification JWT](https://univerdog.site/login) : Utilisation de tokens JWT pour l'authentification sécurisée via le protocole Bearer
+-   🔐 [Connexion sécurisée avec Google](https://univerdog.site/login) : Utilisez Google pour vous connecter de manière sécurisée
 
 ## 🛠 Spécifications techniques
 
@@ -70,36 +69,25 @@ UniversDog est une API RESTful robuste construite avec Laravel, conçue pour ré
 
 ### Contrôleurs principaux
 
-#### 🔑 AuthController
+        #### 🔑 AuthController
 
-Responsable de l'authentification des utilisateurs.
+        Responsable de l'authentification des utilisateurs.
 
-**Routes :**
+        #### 🚹 ProfessionalController
 
--   `POST /api/register` : Inscrire un nouvel utilisateur
--   `POST /api/login` : Connecter un utilisateur existant
--   `POST /api/logout` : Déconnecter un utilisateur
+        Gère les professionnels.
 
-#### 📅 AppointmentController
+        #### 🐶 DogController
 
-Gère les rendez-vous.
+        Gère les chiens.
 
-**Routes :**
+        #### 📅 AppointmentController
 
--   `POST /api/appointments` : Créer un nouveau rendez-vous
--   `GET /api/appointments/{id}` : Récupérer un rendez-vous par ID
--   `PUT /api/appointments/{id}` : Mettre à jour un rendez-vous existant
--   `DELETE /api/appointments/{id}` : Supprimer un rendez-vous
+        Gère les rendez-vous.
 
-#### 📸 PhotoController
+        #### 🔄 AvailabilityController
 
-Gère les photos de chiens.
-
-**Routes :**
-
--   `POST /api/photos` : Créer une nouvelle photo
--   `GET /api/photos/{id}` : Récupérer une photo par ID
--   `PUT /api/photos/{id}` : Mettre à jour une photo existante
+        Gère les disponibilités.
 
 ## 🚀 Installation
 
